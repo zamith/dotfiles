@@ -1,0 +1,21 @@
+[user]
+    name = Zamith
+    email = zamith.28@gmail.com
+[gui]
+    recentrepo = /Users/luis/NetBeansProjects/TSLEditorProject/tsleditor
+[dude]
+    icon = /Users/luis/Desktop/octocat.png
+    interval = 60
+[alias]
+    lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)[%an]%Creset' --abbrev-commit
+    logme = !git lg --author=zamith
+    conflicts = diff --name-only --diff-filter=U
+    delete = branch -D
+    co = checkout
+    br = checkout -b
+[push]
+	default = tracking
+[color]
+    ui = true
+[web]
+	browser = open
