@@ -19,3 +19,7 @@
     ui = true
 [web]
 	browser = open
+[core]
+  editor = vim --noplugin
+[apply]
+  whitespace = nowarn

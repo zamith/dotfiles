@@ -8,6 +8,7 @@ source "$UTILS_PROJECT_PATH"/BASHRC/profiles/all
 
 #Basics
 alias ls="ls -G"
+alias a="ls -a"
 alias curl="/usr/bin/curl"
 
 #Shortcuts
@@ -104,9 +105,36 @@ g() {
   if [ $# -eq 0 ]
   then
     gst
+  elif [ "$1" == "update" ]
+  then
+    git-on-dev
+  elif [ "$1" == "nuke" ]
+  then
+    git-nuke
   else
     git "$@"
   fi
+}
+
+function git_branch_name {
+  val=`git branch 2>/dev/null | grep '^*' | colrm 1 2`
+  echo "$val"
+}
+
+function git-done {
+  branch=`git_branch_name`
+  git checkout dev && git merge $branch --ff-only && bundle install && rake db:migrate db:test:prepare && rake && git push && git branch -D $branch && git push origin :$branch
+}
+
+function git-nuke {
+  git branch -D $1 && git push origin :$1
+}
+
+function git-on-dev {
+  branch=`git_branch_name`
+  git checkout dev && git pull --rebase 
+  git checkout $branch
+  git rebase dev
 }
 
 #Group Buddies
@@ -122,7 +150,7 @@ most() {
 
 retag()
 {
-  ctags -R --exclude=.git --exclude=log * $GEM_HOME/gems
+  ctags -R --exclude=.git --exclude=log --exclude=tmp * $GEM_HOME/gems
 }
 
 ha()

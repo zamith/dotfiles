@@ -114,6 +114,9 @@ map vi :tabe ~/.vim/vimrc<CR>
 " Open bash profile
 map sh :tabe ~/.bash_profile<CR>
 
+" Work on coachme
+map <silent> cm :! cd $HOME/Code/Ruby/GroupBuddies/coachme<cr>:e app/<cr>
+
 " Saving
 if has("gui_running")
   map <D-s> <esc>:w<CR>
