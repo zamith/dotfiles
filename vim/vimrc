@@ -124,15 +124,22 @@ else
   map <C-s> <esc>:w<CR>
 endif
 
+" Ruby test
+map <Leader>r <Plug>RubyTestRun
+map <Leader>R <Plug>RubyFileRun
+
+" NERDTree
+map <silent> <Leader>o :NERDTreeToggle<CR>
+
 "-----------------------
 " INSERT MODE MAPPINGS
 "-----------------------
 
 " Saving
 if has("gui_running")
-  imap <D-s> <esc>:w<CR>i
+  imap <D-s> <esc>:w<CR>
 else
-  imap <C-s> <esc>:w<CR>i
+  imap <C-s> <esc>:w<CR>
 endif
 
 "-----------------------
@@ -148,7 +155,7 @@ cmap w!! w !sudo tee % >/dev/null
 "-----------------------
 
 " Visual block git blame
-vmap <Leader>b :<C-U>Shell git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+vmap <Leader>b :! git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 " Visual mode duplicate below
 vmap D y'>p<S-O><Esc>
@@ -163,7 +170,6 @@ let g:ackprg="/usr/local/bin/ack -H --nogroup --column --nopager --nocolor"
 
 " Fuzzy finder: ignore stuff that can't be opened, and generated files
 let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
-
 
 "-----------------------
 " AUTOCOMMANDS
@@ -182,7 +188,10 @@ autocmd BufWritePre <buffer> :%s/\s\+$//e
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Enable rvm
-autocmd BufEnter * Rvm
+" autocmd BufEnter * Rvm
+
+" NERDTree when no files
+autocmd vimenter * if !argc() | NERDTree | endif
 
 "-----------------------
 " FUNCTIONS

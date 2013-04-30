@@ -123,6 +123,11 @@ function git_branch_name {
 
 function git-done {
   branch=`git_branch_name`
+  git-on-dev && git checkout dev && git merge $branch --ff-only && git push && git branch -D $branch && git push origin :$branch
+}
+
+function git-done-with-tests {
+  branch=`git_branch_name`
   git checkout dev && git merge $branch --ff-only && bundle install && rake db:migrate db:test:prepare && rake && git push && git branch -D $branch && git push origin :$branch
 }
 
@@ -143,6 +148,9 @@ alias c='cd /Users/luis/Code/Ruby/GroupBuddies/coachme'
 alias rb='cd /Users/luis/Code/Ruby/GroupBuddies/roundabet'
 alias blog='cd /Users/luis/Code/Ruby/blog.zamith.pt/octopress'
 alias v='vim'
+alias sr='spring rspec'
+alias b='bundle'
+alias be='bundle exec'
 
 most() {
   history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | head -n20
