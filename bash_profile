@@ -111,6 +111,9 @@ g() {
   elif [ "$1" == "nuke" ]
   then
     git-nuke
+  elif [ "$1" == "br" ]
+  then
+    git co -b $2 && git-push-remote
   else
     git "$@"
   fi
@@ -123,7 +126,7 @@ function git_branch_name {
 
 function git-done {
   branch=`git_branch_name`
-  git-on-dev && git checkout dev && git merge $branch --ff-only && git push && git branch -D $branch && git push origin :$branch
+  git-on-dev "interactive" && git checkout dev && git merge $branch --ff-only && git push && git branch -D $branch && git push origin :$branch
 }
 
 function git-done-with-tests {
@@ -135,11 +138,21 @@ function git-nuke {
   git branch -D $1 && git push origin :$1
 }
 
-function git-on-dev {
+function git-on-dev() {
   branch=`git_branch_name`
   git checkout dev && git pull --rebase 
   git checkout $branch
-  git rebase dev
+  if [ "$1" == "interactive" ]
+  then
+    git rebase -i dev
+  else
+    git rebase dev
+  fi
+}
+
+function git-push-remote() {
+  branch=$(git_branch_name)
+  git push --set-upstream origin $branch
 }
 
 #Group Buddies

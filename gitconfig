@@ -12,7 +12,6 @@
     conflicts = diff --name-only --diff-filter=U
     delete = branch -D
     co = checkout
-    br = checkout -b
 [push]
 	default = tracking
 [color]
