@@ -97,14 +97,15 @@ alias gogodata="rake db:fill:nemum_data:all"
 alias r="rails"
 
 # Alias for git
+alias git="$HOME/bin/hub"
 alias gst='git status'
 alias gco='git checkout'
-alias git="$HOME/bin/hub"
+alias gra='git reset --hard HEAD'
 
 g() {
   if [ $# -eq 0 ]
   then
-    gst
+    gst -sb
   elif [ "$1" == "update" ]
   then
     git-on-dev
@@ -114,6 +115,9 @@ g() {
   elif [ "$1" == "br" ]
   then
     git co -b $2 && git-push-remote
+  elif [ "$1" == "commit" ]
+  then
+    echo "Use 'g ct' instead!"
   else
     git "$@"
   fi
