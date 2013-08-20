@@ -78,7 +78,7 @@ set list
 set listchars=tab:--,trail:.,nbsp:.
 set pastetoggle=<C-p>
 
-set relativenumber
+set number
 
 "-----------------------
 " NORMAL MODE MAPPINGS
@@ -114,6 +114,9 @@ map vi :tabe ~/.vim/vimrc<CR>
 " Open bash profile
 map sh :tabe ~/.bash_profile<CR>
 
+" Change all double to single quotes
+map <silent> sq <esc>:%s/"\([^"]*\)"/'\1'/g<CR>
+
 " Work on coachme
 map <silent> cm :! cd $HOME/Code/Ruby/GroupBuddies/coachme<cr>:e app/<cr>
 
@@ -130,6 +133,9 @@ map <Leader>R <Plug>RubyFileRun
 
 " NERDTree
 map <silent> <Leader>o :NERDTreeToggle<CR>
+
+" Indent complete file
+map <Leader>i gg=G
 
 "-----------------------
 " INSERT MODE MAPPINGS
@@ -148,7 +154,6 @@ endif
 
 " When you forget to sudo a file
 cmap w!! w !sudo tee % >/dev/null
-
 
 "-----------------------
 " VISUAL MODE MAPPINGS
@@ -174,12 +179,6 @@ let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;
 "-----------------------
 " AUTOCOMMANDS
 "-----------------------
-
-" Line number related
-:au FocusLost * :set number
-:au FocusGained * :set relativenumber
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
 
 " Remove trailing whitespaces
 autocmd BufWritePre <buffer> :%s/\s\+$//e
