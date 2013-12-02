@@ -1,0 +1,72 @@
+g() {
+  if [[ $# -eq 0 ]]
+  then
+    gst -sb
+  elif [[ "$1" == "update" ]]
+  then
+    git-on-dev
+  elif [[ "$1" == "nuke" ]]
+  then
+    git-nuke
+  elif [[ "$1" == "br" ]]
+  then
+    git co -b $2 && git-push-remote
+  elif [[ "$1" == "commit" ]]
+  then
+    echo "Use 'g ct' instead!"
+  else
+    git "$@"
+  fi
+}
+
+function git_branch_name {
+  val=`git branch 2>/dev/null | grep '^*' | colrm 1 2`
+  echo "$val"
+}
+
+function git-done {
+  branch=`git_branch_name`
+  git-on-dev "interactive" && git checkout dev && git merge $branch --ff-only && git push && git branch -D $branch && git push origin :$branch
+}
+
+function git-done-with-tests {
+  branch=`git_branch_name`
+  git checkout dev && git merge $branch --ff-only && bundle install && rake db:migrate db:test:prepare && rake && git push && git branch -D $branch && git push origin :$branch
+}
+
+function git-nuke {
+  git branch -D $1 && git push origin :$1
+}
+
+function git-on-dev() {
+  branch=`git_branch_name`
+  git checkout dev && git pull --rebase
+  git checkout $branch
+  if [[ "$1" == "interactive" ]]
+  then
+    git rebase -i dev
+  else
+    git rebase dev
+  fi
+}
+
+function git-push-remote() {
+  branch=$(git_branch_name)
+  git push --set-upstream origin $branch
+}
+
+most() {
+  history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | head -n20
+}
+
+retag()
+{
+  ctags -R --exclude=.git --exclude=log --exclude=tmp * $GEM_HOME/gems
+}
+
+hex2str()
+{
+  LINE=$(echo $@ | sed 's/ //g')
+  echo $LINE | perl -ne 's/([0-9a-f]{2})/print chr hex $1/gie'
+  echo ""
+}

@@ -1,15 +1,8 @@
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:usr/texbin:/usr/X11/bin:$HOME/Scripts:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:usr/texbin:/usr/X11/bin:$HOME/Scripts:/usr/local/share/npm/bin:$PATH"
+export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
-#Basics
-alias ls="ls -G"
-alias a="ls -a"
-alias curl="/usr/bin/curl"
-
-#Shortcuts
-alias up2="cd ../.."
-alias up3="cd ../../.."
-alias up4="cd ../../../.."
-alias up5="cd ../../../../.."
+#Postgres.app
+export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 
 # My Prompt
 parse_git_branch() {
@@ -33,96 +26,15 @@ else echo ${PWD/\/Users\/$(whoami)/\~}; fi
 echo -ne "\033]0;`hostname -s`:`pwd`\007"'
 export CLICOLOR=TRUE
 
-# Alias for RoR 3
-alias r="rails"
+# aliases
+if [ -e "$HOME/.aliases" ]; then
+  source "$HOME/.aliases"
+fi
 
-# Alias for git
-alias gst='git status'
-alias gco='git checkout'
-alias gra='git reset --hard HEAD'
-alias gpr='hub pull-request -b'
-alias gprd='hub pull-request -b dev'
-alias gprb='Use gprd, learn how to write!'
-
-g() {
-  if [ $# -eq 0 ]
-  then
-    gst -sb
-  elif [ "$1" == "update" ]
-  then
-    git-on-dev
-  elif [ "$1" == "nuke" ]
-  then
-    git-nuke
-  elif [ "$1" == "br" ]
-  then
-    git co -b $2 && git-push-remote
-  elif [ "$1" == "commit" ]
-  then
-    echo "Use 'g ct' instead!"
-  else
-    git "$@"
-  fi
-}
-
-function git_branch_name {
-  val=`git branch 2>/dev/null | grep '^*' | colrm 1 2`
-  echo "$val"
-}
-
-function git-done {
-  branch=`git_branch_name`
-  git-on-dev "interactive" && git checkout dev && git merge $branch --ff-only && git push && git branch -D $branch && git push origin :$branch
-}
-
-function git-done-with-tests {
-  branch=`git_branch_name`
-  git checkout dev && git merge $branch --ff-only && bundle install && rake db:migrate db:test:prepare && rake && git push && git branch -D $branch && git push origin :$branch
-}
-
-function git-nuke {
-  git branch -D $1 && git push origin :$1
-}
-
-function git-on-dev() {
-  branch=`git_branch_name`
-  git checkout dev && git pull --rebase
-  git checkout $branch
-  if [ "$1" == "interactive" ]
-  then
-    git rebase -i dev
-  else
-    git rebase dev
-  fi
-}
-
-function git-push-remote() {
-  branch=$(git_branch_name)
-  git push --set-upstream origin $branch
-}
-
-#Group Buddies
-alias b='bundle'
-alias be='bundle exec'
-alias c='cd /Users/zamith/Projects/groupbuddies/coachme-web'
-alias zr='zeus rspec'
-alias cuke='cucumber'
-
-most() {
-  history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | head -n20
-}
-
-retag()
-{
-  ctags -R --exclude=.git --exclude=log --exclude=tmp * $GEM_HOME/gems
-}
-
-hex2str()
-{
-  LINE=$(echo $@ | sed 's/ //g')
-  echo $LINE | perl -ne 's/([0-9a-f]{2})/print chr hex $1/gie'
-  echo ""
-}
+# functions
+if [ -e "$HOME/.functions" ]; then
+  source "$HOME/.functions"
+fi
 
 if [ -f ~/dotfiles/git-completion.bash ]; then
   source ~/dotfiles/git-completion.bash

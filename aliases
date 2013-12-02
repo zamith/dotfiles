@@ -1,0 +1,29 @@
+#Basics
+alias ls="ls -G"
+alias a="ls -a"
+alias curl="/usr/bin/curl"
+
+#Shortcuts
+alias up2="cd ../.."
+alias up3="cd ../../.."
+alias up4="cd ../../../.."
+alias up5="cd ../../../../.."
+
+# Alias for RoR 3
+alias r="rails"
+
+# Alias for git
+alias gst="git status"
+alias gco='git checkout'
+alias gra='git reset --hard HEAD'
+alias gpr='hub pull-request -b'
+alias gprd='hub pull-request -b dev'
+alias gprb='Use gprd, learn how to write!'
+
+#Group Buddies
+alias b='bundle'
+alias be='bundle exec'
+alias c='cd /Users/zamith/Projects/groupbuddies/coachme-web'
+alias zr='zeus rspec'
+alias cuke='cucumber'
+
