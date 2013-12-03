@@ -124,7 +124,133 @@ nnoremap <silent> <Leader>q <Esc>:bw<cr>
 map vi :tabe ~/.vim/vimrc<CR>
 
 " Open bash profile
-map sh :tabe ~/.bash_profile<CR>
+map sh :tabe ~/.bash_profilee space as leader
+let mapleader=" "
+let &t_Co=256
+
+execute pathogen#infect()
+call pathogen#incubate()
+call pathogen#helptags()
+syntax on
+filetype plugin indent on
+
+" Color scheme
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
+
+"-----------------------
+" SETTINGS
+"-----------------------
+
+" Set my font
+set guifont=Monaco:h14
+
+" Disable mouse
+set mouse=""
+
+" Remove right side bar in mac vim
+set guioptions-=r
+set guioptions-=L
+
+" Sets the block cursor in all modes
+set guicursor=a:block-Cursor
+
+" Show branch in status line
+set statusline=%t       "tail of the filename
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=%{&ff}] "file format
+set statusline+=%h      "help file flag
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=%y      "filetype
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+set statusline+=\ %{'('.fugitive#head(7).')'} "git branch
+
+" Backup stuff
+set backupdir=./.backup,$HOME/vim.tmp,/tmp
+set directory=./.backup,$HOME/vim.tmp,/tmp
+set undodir=./.vim-undo,$HOME/vim.tmp,/tmp
+set noundofile
+
+" Highlights current line and column
+set cursorcolumn
+set cursorline
+
+" CTags settings
+set tags=./tags;
+
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set autoindent
+set smarttab
+set nowrap
+set backspace=indent,eol,start
+set autoindent
+set copyindent
+set shiftround
+set ignorecase
+set smartcase
+set hlsearch
+set undolevels=1000
+set title
+set visualbell
+set noerrorbells
+set list
+
+set listchars=tab:--,trail:.,nbsp:.
+set pastetoggle=<C-p>
+
+set number
+
+"-----------------------
+" NORMAL MODE MAPPINGS
+"-----------------------
+
+" ctags
+nnoremap fd <C-]>
+
+" Remove search highlight
+nmap <silent> ,. :nohlsearch<CR>
+
+" Do not jump over wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+" Bind k to grep word under cursor
+nnoremap k :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
+
+" Bind <C-f> to grep shortcut
+command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap <C-f> :Ag<SPACE>
+
+
+nnoremap <C-n> :call NumberToggle()<cr>
+
+" Remap buffer closing
+nnoremap <silent> <Leader>q <Esc>:bw<cr>
+
+" Open this file
+map vi :tabe ~/.vim/vimrc<CR>
+
+" Open bash profile
+map sh :tabe ~/.zshrc<CR>
 
 " Change all double to single quotes
 map <silent> sq <esc>:%s/"\([^"]*\)"/'\1'/g<CR>
@@ -213,11 +339,118 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Line number settings
 function! NumberToggle()
-	if(&relativenumber == 1)
-		set number
-	else
-		set relativenumber
-	endif
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+"-----------------------
+" OTHER
+"-----------------------
+
+" Highlight the status line
+highlight StatusLine ctermbg=black
+
+" Open rails routes file
+command! Rroutes :e config/routes.rb
+
+" Open rails factories file
+command! Rfactories :e spec/factories.rb
+
+" Change all double to single quotes
+map <silent> sq <esc>:%s/"\([^"]*\)"/'\1'/g<CR>
+
+" Work on coachme
+map <silent> cm :! cd $HOME/Code/Ruby/GroupBuddies/coachme<cr>:e app/<cr>
+
+" Saving
+if has("gui_running")
+  map <D-s> <esc>:w<CR>
+else
+  map <C-s> <esc>:w<CR>
+endif
+
+" Ruby test
+map <Leader>r <Plug>RubyTestRun
+map <Leader>R <Plug>RubyFileRun
+
+" NERDTree
+map <silent> <Leader>o :NERDTreeToggle<CR>
+
+" Indent complete file
+map <Leader>i gg=G
+
+"-----------------------
+" INSERT MODE MAPPINGS
+"-----------------------
+
+" Saving
+if has("gui_running")
+  imap <D-s> <esc>:w<CR>
+else
+  imap <C-s> <esc>:w<CR>
+endif
+
+"-----------------------
+" COMMAND MODE MAPPINGS
+"-----------------------
+
+" When you forget to sudo a file
+cmap w!! w !sudo tee % >/dev/null
+
+"-----------------------
+" VISUAL MODE MAPPINGS
+"-----------------------
+
+" Visual block git blame
+vmap <Leader>b :! git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+
+" Visual mode duplicate below
+vmap D y'>p<S-O><Esc>
+
+
+"-----------------------
+" LETS
+"-----------------------
+
+" Ack.vim configs
+let g:ackprg="/usr/local/bin/ack -H --nogroup --column --nopager --nocolor"
+
+" Fuzzy finder: ignore stuff that can't be opened, and generated files
+let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
+
+"-----------------------
+" AUTOCOMMANDS
+"-----------------------
+
+" Remove trailing whitespaces
+autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+" Disable auto comment insertion
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Enable rvm
+" autocmd BufEnter * Rvm
+
+" NERDTree when no files
+autocmd vimenter * if !argc() | NERDTree | endif
+
+" Delete trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
+"-----------------------
+" FUNCTIONS
+"-----------------------
+
+" Line number settings
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
 endfunc
 
 "-----------------------

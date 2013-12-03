@@ -26,4 +26,5 @@ alias be='bundle exec'
 alias c='cd /Users/zamith/Projects/groupbuddies/coachme-web'
 alias zr='zeus rspec'
 alias cuke='cucumber'
+alias sr='screen -r'
 
