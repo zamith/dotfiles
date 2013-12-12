@@ -43,4 +43,4 @@ fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 eval "$($HOME/Projects/groupbuddies/gb/bin/gb init -)"
 
-ssh-add ~/.ssh/old_rsa
+export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt

@@ -12,6 +12,7 @@ filetype plugin indent on
 set background=dark
 let g:solarized_termcolors=256
 colorscheme solarized
+call togglebg#map("cb")
 
 "-----------------------
 " SETTINGS
@@ -372,15 +373,17 @@ else
   map <C-s> <esc>:w<CR>
 endif
 
-" Ruby test
-map <Leader>r <Plug>RubyTestRun
-map <Leader>R <Plug>RubyFileRun
-
 " NERDTree
 map <silent> <Leader>o :NERDTreeToggle<CR>
 
 " Indent complete file
 map <Leader>i gg=G
+
+" Vim Rspec
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 "-----------------------
 " INSERT MODE MAPPINGS

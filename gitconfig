@@ -13,6 +13,7 @@
     delete = branch -D
     co = checkout
     ct = commit -v
+	today = log --since=midnight --author='Zamith' --oneline
 [push]
 	default = tracking
 [color]
