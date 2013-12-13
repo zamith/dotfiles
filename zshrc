@@ -41,8 +41,8 @@ if [ -e "$HOME/.functions" ]; then
   source "$HOME/.functions"
 fi
 
-if [ -f ~/dotfiles/git-completion.bash ]; then
-  source ~/dotfiles/git-completion.bash
+if [ -e "$HOME/dotfiles/git-completion.bash" ]; then
+  source "$HOME/dotfiles/git-completion.bash"
 fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
