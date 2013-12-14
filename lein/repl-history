@@ -1,0 +1,14 @@
+(drop 1 "ACTG")
+(str (drop 1 "ACTG"))
+(apply str (drop 1 "ACTG"))
+exit
+(clojure.string/join "ABCD" "F")
+(clojure.string/join "F" "ABCD")
+(str "F" "ABCD")
+(str "ABCD" "F")
+exit
+(first "ABCD")
+(str (first "ABCD"))
+(str (rest "ABCD"))
+(apply str (rest "ABCD"))
+exit
