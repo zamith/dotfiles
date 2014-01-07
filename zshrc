@@ -45,6 +45,10 @@ if [ -e "$HOME/dotfiles/git-completion.bash" ]; then
   source "$HOME/dotfiles/git-completion.bash"
 fi
 
+if [ -e "$HOME/dotfiles/zsh_plugins/zsh-syntax-highlighting" ]; then
+  source "$HOME/dotfiles/zsh_plugins/zsh-syntax-highlighting"
+fi
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 eval "$($HOME/Projects/groupbuddies/gb/bin/gb init -)"
 
