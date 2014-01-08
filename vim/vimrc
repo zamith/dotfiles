@@ -80,6 +80,7 @@ set list
 set listchars=tab:--,trail:.,nbsp:.
 set pastetoggle=<C-p>
 
+set relativenumber
 set number
 
 "-----------------------
@@ -112,7 +113,7 @@ endif
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
 
 " Bind <C-f> to grep shortcut
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap <C-f> :Ag<SPACE>
 
 
@@ -215,7 +216,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Line number settings
 function! NumberToggle()
   if(&relativenumber == 1)
-    set number
+    set norelativenumber
   else
     set relativenumber
   endif
