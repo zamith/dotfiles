@@ -54,3 +54,4 @@ eval "$($HOME/Projects/groupbuddies/gb/bin/gb init -)"
 
 ssh-add ~/.ssh/old_rsa
 
+cdpath=($HOME/Projects/groupbuddies $HOME/Projects/personal)
