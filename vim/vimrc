@@ -7,7 +7,24 @@ syntax on
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
+
+" Force reload
+filetype off
 filetype plugin indent on
+
+runtime macros/matchit.vim
+
+augroup vimrcEx
+  autocmd!
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it for commit messages, when the position is invalid, or when
+  " inside an event handler (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+augroup END
 
 " Color scheme
 set background=dark
@@ -48,10 +65,13 @@ set statusline+=\ %P    "percent through file
 set statusline+=\ %{'('.fugitive#head(7).')'} "git branch
 
 " Backup stuff
-set backupdir=./.backup,$HOME/vim.tmp,/tmp
-set directory=./.backup,$HOME/vim.tmp,/tmp
-set undodir=./.vim-undo,$HOME/vim.tmp,/tmp
+set nobackup
+set nowritebackup
+set noswapfile
 set noundofile
+
+" Automatically write before running commands
+set autowrite
 
 " Highlights current line and column
 set cursorcolumn
@@ -99,11 +119,17 @@ nmap <silent> ,. :nohlsearch<CR>
 nnoremap j gj
 nnoremap k gk
 
+nmap <silent><buffer> <C-s> :ruby VIMCucumber.jump_step('split')<CR>
+
 " Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" Stupid 'murichans
+map º [
+map ´ ]
 
 " The Silver Searcher
 if executable('ag')
@@ -142,13 +168,6 @@ map <silent> sq <esc>:%s/"\([^"]*\)"/'\1'/g<CR>
 " Work on coachme
 map <silent> cm :! cd $HOME/Code/Ruby/GroupBuddies/coachme<cr>:e app/<cr>
 
-" Saving
-if has("gui_running")
-  map <D-s> <esc>:w<CR>
-else
-  map <C-s> <esc>:w<CR>
-endif
-
 " Ruby test
 map <Leader>r <Plug>RubyTestRun
 map <Leader>R <Plug>RubyFileRun
@@ -162,14 +181,6 @@ map <Leader>i gg=G
 "-----------------------
 " INSERT MODE MAPPINGS
 "-----------------------
-
-" Saving
-if has("gui_running")
-  imap <D-s> <esc>:w<CR>
-else
-  imap <C-s> <esc>:w<CR>
-endif
-
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
