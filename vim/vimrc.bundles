@@ -1,0 +1,41 @@
+set nocompatible
+
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
+Bundle 'kana/vim-textobj-user'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'scrooloose/nerdtree'
+Bundle 'slim-template/vim-slim'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tomtom/tlib_vim'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-rvm'
+Bundle 'tpope/vim-sensible'
+Bundle 'tpope/vim-surround'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'vim-scripts/ctags.vim'
+
+if filereadable(expand("~/.vimrc.bundles.local"))
+  source ~/.vimrc.bundles.local
+endif
+
+filetype on
