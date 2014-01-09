@@ -119,8 +119,6 @@ nmap <silent> ,. :nohlsearch<CR>
 nnoremap j gj
 nnoremap k gk
 
-nmap <silent><buffer> <C-s> :ruby VIMCucumber.jump_step('split')<CR>
-
 " Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
