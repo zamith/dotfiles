@@ -13,7 +13,13 @@
     delete = branch -D
     co = checkout
     ct = commit -v
-	today = log --since=midnight --author='Zamith' --oneline
+    today = log --since=midnight --author='Zamith' --oneline
+    cont = rebase --continue
+    br = co -b
+    wtf = !git-wtf
+    ff = !git fetch && git wtf
+    r = reset HEAD
+    rh = reset --hard HEAD
 [push]
 	default = tracking
 [color]

@@ -12,9 +12,19 @@ if [ ! -h "$HOME/.vimrc.bundles" ]; then
 fi
 
 # ZSH
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+fi
+
 if [ ! -h "$HOME/.zshrc" ]; then
   ln -s "$(pwd)/zshrc" "$HOME/.zshrc"
 fi
 
-# The Silver Searcher
+if [ ! -h "/usr/local/bin/git-wtf" ]; then
+  ln -s "$(pwd)/git_plugins/git-wtf" "/usr/local/bin/git-wtf"
+fi
+
+# Homebrew formulas
 brew install the_silver_searcher
+brew install zsh-completions
+

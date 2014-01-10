@@ -41,9 +41,9 @@ if [ -e "$HOME/.functions" ]; then
   source "$HOME/.functions"
 fi
 
-if [ -e "$HOME/dotfiles/git-completion.bash" ]; then
-  source "$HOME/dotfiles/git-completion.bash"
-fi
+# completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+rm -f ~/.zcompdump; compinit
 
 if [ -e "$HOME/dotfiles/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh" ]; then
   source "$HOME/dotfiles/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
@@ -52,6 +52,8 @@ fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 eval "$($HOME/Projects/groupbuddies/gb/bin/gb init -)"
 
-ssh-add ~/.ssh/old_rsa
+if [ -e "$HOME/.ssh/old_rsa" ]; then
+  ssh-add ~/.ssh/old_rsa
+fi
 
 cdpath=($HOME/Projects/groupbuddies $HOME/Projects/personal)
