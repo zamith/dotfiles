@@ -129,6 +129,12 @@ map <C-l> <C-w>l
 map º [
 map ´ ]
 
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep

@@ -57,3 +57,6 @@ if [ -e "$HOME/.ssh/old_rsa" ]; then
 fi
 
 cdpath=($HOME/Projects/groupbuddies $HOME/Projects/personal)
+
+# GRC
+source "$(brew --prefix)/etc/grc.bashrc"
