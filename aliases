@@ -13,7 +13,7 @@ alias up5="cd ../../../../.."
 alias r="rails"
 
 # Alias for git
-alias gst="git status"
+alias gst="git status -sb"
 alias gco='git checkout'
 alias gra='git reset --hard HEAD'
 alias gpr='hub pull-request -b'

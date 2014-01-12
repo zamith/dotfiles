@@ -112,6 +112,9 @@ set number
 " ctags
 nnoremap fd <C-]>
 
+" Remove all ruby comments
+nnoremap rc :g/^ *#.*/d<CR>
+
 " Remove search highlight
 nmap <silent> ,. :nohlsearch<CR>
 
@@ -153,7 +156,6 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
 " Bind <C-f> to grep shortcut
 command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap <C-f> :Ag<SPACE>
-
 
 nnoremap <C-n> :call NumberToggle()<cr>
 
