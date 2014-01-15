@@ -49,6 +49,9 @@ set guioptions-=L
 " Sets the block cursor in all modes
 set guicursor=a:block-Cursor
 
+" Use system clipboard on vim
+set clipboard=unnamed
+
 " Show branch in status line
 set laststatus=2
 set statusline=%t       "tail of the filename
