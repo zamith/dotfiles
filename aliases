@@ -9,8 +9,10 @@ alias up3="cd ../../.."
 alias up4="cd ../../../.."
 alias up5="cd ../../../../.."
 
-# Alias for RoR 3
+# Alias for RoR
 alias r="rails"
+alias migrate="bundle exec rake db:migrate && bundle exec rake db:migrate RAILS_ENV=test"
+alias rollback="bundle exec rake db:rollback && bundle exec rake db:rollback RAILS_ENV=test"
 
 # Alias for git
 alias gst="git status -sb"
