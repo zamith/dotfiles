@@ -15,7 +15,7 @@
     ct = commit -v
     today = log --since=midnight --author='Zamith' --oneline
     cont = rebase --continue
-    br = co -b
+    br = checkout -b
     wtf = !git-wtf
     ff = !git fetch && git wtf
     r = reset HEAD

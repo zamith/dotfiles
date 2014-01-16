@@ -8,6 +8,12 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
+" Color scheme
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
+call togglebg#map("cb")
+
 " Force reload
 filetype off
 filetype plugin indent on
@@ -25,12 +31,6 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
 augroup END
-
-" Color scheme
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
-call togglebg#map("cb")
 
 "-----------------------
 " SETTINGS
@@ -288,5 +288,5 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
-noremap   v     <NOP>
-noremap   V   <NOP>
+" noremap   v     <NOP>
+" noremap   V   <NOP>
