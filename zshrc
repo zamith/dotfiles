@@ -23,6 +23,7 @@ export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
 #Postgres.app
 export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
 
 # NERDTree compatibility with zsh
 export LC_ALL=en_US.utf-8
