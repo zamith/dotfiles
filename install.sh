@@ -30,6 +30,11 @@ if [ ! -h "$BIN_FOLDER/notes" ]; then
   chmod +x "$BIN_FOLDER/notes"
 fi
 
+if [ ! -h "$BIN_FOLDER/replace" ]; then
+  ln -s "$(pwd)/bin/replace" "$BIN_FOLDER/replace"
+  chmod +x "$BIN_FOLDER/replace"
+fi
+
 if [ ! -d "$HOME/.grc" ]; then
   ln -s "$(pwd)/grc" "$HOME/.grc"
 fi

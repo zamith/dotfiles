@@ -27,9 +27,9 @@ augroup vimrcEx
   " Don't do it for commit messages, when the position is invalid, or when
   " inside an event handler (happens when dropping a file on gvim).
   autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
 augroup END
 
 "-----------------------
@@ -185,7 +185,7 @@ map <Leader>R <Plug>RubyFileRun
 map <silent> <Leader>o :NERDTreeToggle<CR>
 
 " Indent complete file
-map <Leader>i gg=G
+map <Leader>i gg=G''
 
 "-----------------------
 " INSERT MODE MAPPINGS
@@ -196,12 +196,12 @@ map <Leader>i gg=G
 set wildmode=list:longest,list:full
 set complete=.,w,t
 function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
 endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
