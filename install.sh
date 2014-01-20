@@ -40,8 +40,4 @@ if [ ! -d "$HOME/.grc" ]; then
 fi
 
 # Homebrew formulas
-brew install the_silver_searcher
-brew install zsh-completions
-brew install gawk
-brew install grc
-
+brew bundle
