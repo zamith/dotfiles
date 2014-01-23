@@ -9,6 +9,7 @@
 [alias]
     lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)[%an]%Creset' --abbrev-commit
     logme = !git lg --author=zamith
+    lgm = !git lg --first-parent master
     conflicts = diff --name-only --diff-filter=U
     delete = branch -D
     co = checkout
@@ -28,6 +29,6 @@
 [web]
 	browser = open
 [core]
-  editor = vim --noplugin
+	editor = vim
 [apply]
   whitespace = nowarn

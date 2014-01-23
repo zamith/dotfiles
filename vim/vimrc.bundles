@@ -8,6 +8,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'AndrewRadev/sideways.vim'
 Bundle 'christoomey/vim-conflicted'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'garbas/vim-snipmate'

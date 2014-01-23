@@ -65,7 +65,7 @@ set statusline+=%=      "left/right separator
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
-set statusline+=\ %{'('.fugitive#head(7).')'} "git branch
+set statusline+=\ %{'('.fugitive#head().')'} "git branch
 
 " Backup stuff
 set nobackup
@@ -95,7 +95,7 @@ set copyindent
 set shiftround
 set ignorecase
 set smartcase
-set hlsearch
+set nohlsearch
 set undolevels=1000
 set title
 set visualbell
@@ -108,6 +108,10 @@ set pastetoggle=<C-p>
 set relativenumber
 set number
 
+" More natural split opening
+set splitbelow
+set splitright
+
 "-----------------------
 " NORMAL MODE MAPPINGS
 "-----------------------
@@ -118,8 +122,8 @@ nnoremap fd <C-]>
 " Remove all ruby comments
 nnoremap rc :g/^ *#.*/d<CR>
 
-" Remove search highlight
-nmap <silent> ,. :nohlsearch<CR>
+" Toggle search highlight
+nmap <silent> ,. :hlsearch!<CR>
 
 " Do not jump over wrapped lines
 nnoremap j gj
@@ -163,7 +167,7 @@ nnoremap <C-f> :Ag<SPACE>
 nnoremap <C-n> :call NumberToggle()<cr>
 
 " Remap buffer closing
-nnoremap <silent> <Leader>q <Esc>:bw<cr>
+nnoremap <silent> <Leader>q <Esc>:q<cr>
 
 " Open this file
 map vimrc :tabe ~/.vim/vimrc<CR>
@@ -186,6 +190,10 @@ map <silent> <Leader>o :NERDTreeToggle<CR>
 
 " Indent complete file
 map <Leader>i gg=G''
+
+" Sideways vim
+map mr :SidewaysRight<CR>
+map ml :SidewaysLeft<CR>
 
 "-----------------------
 " INSERT MODE MAPPINGS
