@@ -12,7 +12,6 @@ endif
 set background=dark
 let g:solarized_termcolors=256
 colorscheme solarized
-call togglebg#map("cb")
 
 " Force reload
 filetype off
@@ -172,14 +171,11 @@ nnoremap <silent> <Leader>q <Esc>:q<cr>
 " Open this file
 map vimrc :tabe ~/.vim/vimrc<CR>
 
-" Open bash profile
-map sh :tabe ~/.bash_profile
+" Open zshrc
+map sh :tabe ~/.zshrc
 
 " Change all double to single quotes
 map <silent> sq <esc>:%s/"\([^"]*\)"/'\1'/g<CR>
-
-" Work on coachme
-map <silent> cm :! cd $HOME/Code/Ruby/GroupBuddies/coachme<cr>:e app/<cr>
 
 " Ruby test
 map <Leader>r <Plug>RubyTestRun
@@ -198,20 +194,6 @@ map ml :SidewaysLeft<CR>
 "-----------------------
 " INSERT MODE MAPPINGS
 "-----------------------
-" Tab completion
-" will insert tab at beginning of line,
-" will use completion if not at beginning
-set wildmode=list:longest,list:full
-set complete=.,w,t
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-p>"
-  endif
-endfunction
-inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
 "-----------------------
 " COMMAND MODE MAPPINGS
@@ -240,6 +222,9 @@ let g:ackprg="/usr/local/bin/ack -H --nogroup --column --nopager --nocolor"
 
 " Fuzzy finder: ignore stuff that can't be opened, and generated files
 let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
+
+" SnipMate snippets dir
+let g:snippets_dir = "~/.vim/snippets"
 
 "-----------------------
 " AUTOCOMMANDS
