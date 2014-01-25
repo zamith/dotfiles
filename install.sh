@@ -21,6 +21,10 @@ if [ ! -h "$HOME/.zshrc" ]; then
   ln -s "$(pwd)/zshrc" "$HOME/.zshrc"
 fi
 
+if [ ! -h "$HOME/.tmux.conf" ]; then
+  ln -s "$(pwd)/tmux.conf" "$HOME/.tmux.conf"
+fi
+
 if [ ! -h "$BIN_FOLDER/git-wtf" ]; then
   ln -s "$(pwd)/git_plugins/git-wtf" "$BIN_FOLDER/git-wtf"
 fi
