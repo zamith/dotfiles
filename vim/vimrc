@@ -49,7 +49,7 @@ set guioptions-=L
 set guicursor=a:block-Cursor
 
 " Use system clipboard on vim
-set clipboard=unnamed
+" set clipboard=unnamed
 
 " Show branch in status line
 set laststatus=2
