@@ -8,3 +8,6 @@ snippet spech
 	describe ${1:`substitute(substitute(vim_snippets#Filename(), '_spec$', '', ''), '\(_\|^\)\(.\)', '\u\2', 'g')`} do
 		${0}
 	end
+
+snippet expht
+	expect(page).to have_text "${0}"

@@ -1,4 +1,12 @@
-install the_silver_searcher
-install zsh-completions
+install ctags
 install gawk
+install git
 install grc
+install imagemagick
+install openssl
+install qt
+install redis
+install the_silver_searcher
+install tree
+install vim
+install zsh-completions
