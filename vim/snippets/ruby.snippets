@@ -9,5 +9,12 @@ snippet spech
 		${0}
 	end
 
+snippet spechf
+	require 'spec_helper'
+
+	feature "${1:`substitute(substitute(substitute(vim_snippets#Filename(), '_spec$', '', ''), '\(_\|^\)', ' ', 'g'), '^ \(.\)', '\u\1', '')`}" do
+		${0}
+	end
+
 snippet expht
 	expect(page).to have_text ${0}

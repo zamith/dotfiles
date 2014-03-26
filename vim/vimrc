@@ -143,12 +143,11 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+let g:rspec_runner = "os_x_iterm"
+let g:rspec_command = "!spring rspec {spec}"
 
 " The Silver Searcher
 if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
@@ -160,8 +159,7 @@ endif
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
 
 " Bind <C-f> to grep shortcut
-command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap <C-f> :Ag<SPACE>
+nnoremap <C-f> :Ack<SPACE>
 
 nnoremap <C-n> :call NumberToggle()<cr>
 
@@ -218,7 +216,7 @@ vmap D y'>p<S-O><Esc>
 "-----------------------
 
 " Ack.vim configs
-let g:ackprg="/usr/local/bin/ack -H --nogroup --column --nopager --nocolor"
+let g:ackprg="ag --nogroup --column --nocolor"
 
 " Fuzzy finder: ignore stuff that can't be opened, and generated files
 let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"

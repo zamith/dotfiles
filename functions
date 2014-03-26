@@ -5,7 +5,7 @@ function git_branch_name {
 
 function git-done {
   branch=`git_branch_name`
-  git-on-dev "interactive" && git checkout dev && git merge $branch --ff-only && git push && git branch -D $branch && git push origin :$branch
+  git-on-branch "master" "interactive" && git checkout master && git merge $branch --ff-only && git push && git branch -D $branch && git push origin :$branch
 }
 
 function git-done-with-tests {
@@ -17,15 +17,15 @@ function git-nuke {
   git branch -D $1 && git push origin :$1
 }
 
-function git-on-dev() {
+function git-on-branch() {
   branch=`git_branch_name`
-  git checkout dev && git pull --rebase
+  git checkout $1 && git pull --rebase
   git checkout $branch
-  if [[ "$1" == "interactive" ]]
+  if [[ "$2" == "interactive" ]]
   then
-    git rebase -i dev
+    git rebase -i $1
   else
-    git rebase dev
+    git rebase $1
   fi
 }
 
