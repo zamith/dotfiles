@@ -26,7 +26,7 @@
     rbs = rebase --skip
     a = add -A
 [push]
-	default = tracking
+	default = current
 [color]
     ui = true
 [web]
