@@ -29,6 +29,14 @@ if [ ! -h "$BIN_FOLDER/git-wtf" ]; then
   ln -s "$(pwd)/git_plugins/git-wtf" "$BIN_FOLDER/git-wtf"
 fi
 
+for program in $(ls -1 "$(pwd)/bin")
+do
+  if [ ! -h "$BIN_FOLDER/$program" ]; then
+    ln -s "$(pwd)/bin/$program" "$BIN_FOLDER/$program"
+    chmod +x "$BIN_FOLDER/$program"
+  fi
+done
+
 if [ ! -h "$BIN_FOLDER/notes" ]; then
   ln -s "$(pwd)/bin/notes" "$BIN_FOLDER/notes"
   chmod +x "$BIN_FOLDER/notes"

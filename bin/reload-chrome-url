@@ -1,0 +1,36 @@
+REGEX="^$1.*"
+
+osascript &> /dev/null <<CODE
+tell application "Google Chrome"
+  activate
+
+  if (count every window) = 0 then
+    make new window
+  end if
+
+  set found to false
+  set theTabIndex to -1
+  repeat with theWindow in every window
+    set theTabIndex to 0
+    repeat with theTab in every tab of theWindow
+      set theTabIndex to theTabIndex + 1
+      if (do shell script "if [[ \"" & theTab's URL & "\" =~ $REGEX ]]; then echo \"found\"; fi") as text is equal to "found" then
+        set found to true
+        exit
+      end if
+    end repeat
+
+    if found then
+      exit repeat
+    end if
+  end repeat
+
+  if found then
+    tell theTab to reload
+    set theWindow's active tab index to theTabIndex
+    set index of theWindow to 1
+  else
+    tell window 1 to make new tab with properties {URL:"$1"}
+  end if
+end tell
+CODE
