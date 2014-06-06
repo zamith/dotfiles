@@ -2,7 +2,7 @@ set nocompatible
 
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
+call vundle#begin()
 
 " Let Vundle manage Vundle
 Plugin 'gmarik/vundle'
@@ -46,4 +46,5 @@ if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
 endif
 
-filetype on
+call vundle#end()
+filetype plugin indent on
