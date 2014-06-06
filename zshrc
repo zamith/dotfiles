@@ -1,3 +1,11 @@
+function safe_source()
+{
+  file_name=$1
+  if [ -e "$file_name" ]; then
+    source "$file_name"
+  fi
+}
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -21,10 +29,6 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:usr/texbin:/usr/X11/bin:$HOME/Scripts:/usr/local/share/npm/bin:$PATH"
 export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
-#Postgres.app
-export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
-export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
-
 # Binstubs
 export PATH=".git/safe/../../bin:$PATH"
 
@@ -35,23 +39,13 @@ export LANG="$LC_ALL"
 # Keep more history
 export HISTSIZE=4000
 
-# aliases
-if [ -e "$HOME/.aliases" ]; then
-  source "$HOME/.aliases"
-fi
+safe_source "$HOME/.functions"
+safe_source "$HOME/.aliases"
+safe_source "$HOME/dotfiles/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+safe_source "$HOME/.zshrc.local"
 
-# functions
-if [ -e "$HOME/.functions" ]; then
-  source "$HOME/.functions"
-fi
-
-# completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 rm -f ~/.zcompdump; compinit
-
-if [ -e "$HOME/dotfiles/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh" ]; then
-  source "$HOME/dotfiles/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
-fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 eval "$($HOME/Projects/groupbuddies/gb/bin/gb init -)"
@@ -61,6 +55,3 @@ if [ -e "$HOME/.ssh/old_rsa" ]; then
 fi
 
 cdpath=($HOME/Projects/groupbuddies $HOME/Projects/personal)
-
-# GRC
-source "$(brew --prefix)/etc/grc.bashrc"
