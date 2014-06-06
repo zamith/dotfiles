@@ -1,15 +1,16 @@
 # Must be ran from dotfiles root
 BIN_FOLDER="/usr/local/bin"
+DOTFILES_FOLDER="$(pwd)"
 
 # Add aliases and functions
 if [ ! -h "$HOME/.aliases" ]; then
-  ln -s "$(pwd)/aliases" "$HOME/.aliases"
+  ln -s "$DOTFILES_FOLDER/aliases" "$HOME/.aliases"
 fi
 if [ ! -h "$HOME/.functions" ]; then
-  ln -s "$(pwd)/functions" "$HOME/.functions"
+  ln -s "$DOTFILES_FOLDER/functions" "$HOME/.functions"
 fi
 if [ ! -h "$HOME/.vimrc.bundles" ]; then
-  ln -s "$(pwd)/vim/vimrc.bundles" "$HOME/.vimrc.bundles"
+  ln -s "$DOTFILES_FOLDER/vim/vimrc.bundles" "$HOME/.vimrc.bundles"
 fi
 
 # ZSH
@@ -18,16 +19,19 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 if [ ! -h "$HOME/.zshrc" ]; then
-  ln -s "$(pwd)/zshrc" "$HOME/.zshrc"
+  ln -s "$DOTFILES_FOLDER/zshrc" "$HOME/.zshrc"
 fi
 
 if [ ! -h "$HOME/.tmux.conf" ]; then
-  ln -s "$(pwd)/tmux.conf" "$HOME/.tmux.conf"
+  ln -s "$DOTFILES_FOLDER/tmux.conf" "$HOME/.tmux.conf"
 fi
 
-if [ ! -h "$BIN_FOLDER/git-wtf" ]; then
-  ln -s "$(pwd)/git_plugins/git-wtf" "$BIN_FOLDER/git-wtf"
-fi
+for plugin in $(ls -1 "$DOTFILES_FOLDER/git_plugins")
+do
+  if [ ! -h "$BIN_FOLDER/$plugin" ]; then
+    ln -s "$DOTFILES_FOLDER/git_plugins/$plugin" "$BIN_FOLDER/$plugin"
+  fi
+done
 
 for program in $(ls -1 "$(pwd)/bin")
 do
@@ -38,17 +42,17 @@ do
 done
 
 if [ ! -h "$BIN_FOLDER/notes" ]; then
-  ln -s "$(pwd)/bin/notes" "$BIN_FOLDER/notes"
+  ln -s "$DOTFILES_FOLDER/bin/notes" "$BIN_FOLDER/notes"
   chmod +x "$BIN_FOLDER/notes"
 fi
 
 if [ ! -h "$BIN_FOLDER/replace" ]; then
-  ln -s "$(pwd)/bin/replace" "$BIN_FOLDER/replace"
+  ln -s "$DOTFILES_FOLDER/bin/replace" "$BIN_FOLDER/replace"
   chmod +x "$BIN_FOLDER/replace"
 fi
 
 if [ ! -d "$HOME/.grc" ]; then
-  ln -s "$(pwd)/grc" "$HOME/.grc"
+  ln -s "$DOTFILES_FOLDER/grc" "$HOME/.grc"
 fi
 
 # Homebrew formulas
