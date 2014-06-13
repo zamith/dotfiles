@@ -18,3 +18,8 @@ snippet spechf
 
 snippet expht
 	expect(page).to have_text ${0}
+
+snippet cont
+	context '${1:spec_name}' do
+		${0}
+	end

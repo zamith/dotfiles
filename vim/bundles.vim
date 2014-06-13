@@ -40,7 +40,6 @@ Plugin 'vim-scripts/BreakPts'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'vim-scripts/genutils'
 Plugin 'zamith/vim-ruby-refactoring'
-Plugin 'zerowidth/vim-copy-as-rtf'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
