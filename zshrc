@@ -47,11 +47,6 @@ safe_source "$HOME/.zshrc.local"
 fpath=(/usr/local/share/zsh-completions $fpath)
 rm -f ~/.zcompdump; compinit
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-eval "$($HOME/Projects/groupbuddies/gb/bin/gb init -)"
 
-if [ -e "$HOME/.ssh/old_rsa" ]; then
-  ssh-add ~/.ssh/old_rsa
-fi
-
-cdpath=($HOME/Projects/groupbuddies $HOME/Projects/personal)
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
