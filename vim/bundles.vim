@@ -39,6 +39,7 @@ Plugin 'tmhedberg/matchit'
 Plugin 'vim-scripts/BreakPts'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'vim-scripts/genutils'
+Plugin 'wting/rust.vim'
 Plugin 'zamith/vim-ruby-refactoring'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
