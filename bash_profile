@@ -45,3 +45,6 @@ fi
 eval "$($HOME/Projects/groupbuddies/gb/bin/gb init -)"
 
 export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+-e 
+export NVM_DIR="/Users/zamith/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
