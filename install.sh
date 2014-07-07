@@ -2,30 +2,42 @@
 BIN_FOLDER="/usr/local/bin"
 DOTFILES_FOLDER="$(pwd)"
 
-# Add aliases and functions
-if [ ! -h "$HOME/.aliases" ]; then
-  ln -s "$DOTFILES_FOLDER/aliases" "$HOME/.aliases"
-fi
-if [ ! -h "$HOME/.functions" ]; then
-  ln -s "$DOTFILES_FOLDER/functions" "$HOME/.functions"
-fi
+function safe_link()
+{
+  if [ ! -h "$HOME/.$1" ]; then
+    ln -s "$DOTFILES_FOLDER/$1" "$HOME/.$1"
+  fi
+}
+
+function safe_link_program()
+{
+  if [ ! -h "$BIN_FOLDER/$1" ]; then
+    ln -s "$DOTFILES_FOLDER/bin/$1" "$BIN_FOLDER/$1"
+    chmod +x "$BIN_FOLDER/$1"
+  fi
+}
+
+# Link all config files
+safe_link "aliases"
+safe_link "functions"
+safe_link "zshrc"
+safe_link "tmux.conf"
+safe_link "grc"
+safe_link "rspec"
+
+safe_link_program "notes"
+safe_link_program "replace"
+
 if [ ! -h "$HOME/.vimrc.bundles" ]; then
   ln -s "$DOTFILES_FOLDER/vim/vimrc.bundles" "$HOME/.vimrc.bundles"
 fi
 
-# ZSH
+# Install oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 fi
 
-if [ ! -h "$HOME/.zshrc" ]; then
-  ln -s "$DOTFILES_FOLDER/zshrc" "$HOME/.zshrc"
-fi
-
-if [ ! -h "$HOME/.tmux.conf" ]; then
-  ln -s "$DOTFILES_FOLDER/tmux.conf" "$HOME/.tmux.conf"
-fi
-
+# Install all git plugins
 for plugin in $(ls -1 "$DOTFILES_FOLDER/git_plugins")
 do
   if [ ! -h "$BIN_FOLDER/$plugin" ]; then
@@ -33,6 +45,7 @@ do
   fi
 done
 
+# Install all binaries
 for program in $(ls -1 "$(pwd)/bin")
 do
   if [ ! -h "$BIN_FOLDER/$program" ]; then
@@ -40,20 +53,6 @@ do
     chmod +x "$BIN_FOLDER/$program"
   fi
 done
-
-if [ ! -h "$BIN_FOLDER/notes" ]; then
-  ln -s "$DOTFILES_FOLDER/bin/notes" "$BIN_FOLDER/notes"
-  chmod +x "$BIN_FOLDER/notes"
-fi
-
-if [ ! -h "$BIN_FOLDER/replace" ]; then
-  ln -s "$DOTFILES_FOLDER/bin/replace" "$BIN_FOLDER/replace"
-  chmod +x "$BIN_FOLDER/replace"
-fi
-
-if [ ! -d "$HOME/.grc" ]; then
-  ln -s "$DOTFILES_FOLDER/grc" "$HOME/.grc"
-fi
 
 # Homebrew formulas
 brew bundle
