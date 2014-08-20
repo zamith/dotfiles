@@ -48,8 +48,6 @@ set backspace=indent,eol,start
 set autoindent
 set copyindent
 set shiftround
-set ignorecase
-set smartcase
 set nohlsearch
 set undolevels=1000
 set title

@@ -25,11 +25,13 @@ safe_link "tmux.conf"
 safe_link "grc"
 safe_link "rspec"
 
+safe_link "vim"
+
 safe_link_program "notes"
 safe_link_program "replace"
 
-if [ ! -h "$HOME/.vimrc.bundles" ]; then
-  ln -s "$DOTFILES_FOLDER/vim/vimrc.bundles" "$HOME/.vimrc.bundles"
+if [ ! -h "$HOME/.vimrc" ]; then
+  ln -s "$DOTFILES_FOLDER/vim/vimrc" "$HOME/.vimrc"
 fi
 
 # Install oh-my-zsh
