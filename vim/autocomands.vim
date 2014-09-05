@@ -25,4 +25,6 @@ if has("autocmd")
 
   " Delete trailing whitespace
   autocmd BufWritePre * :%s/\s\+$//e
+
+  autocmd! vimenter,BufReadPost,BufNewFile * call SetupEnv()
 endif

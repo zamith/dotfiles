@@ -76,6 +76,11 @@ map ml :SidewaysLeft<CR>
 " When you forget to sudo a file
 cmap w!! w !sudo tee % >/dev/null
 
+" Open files in dir of current file
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
+
 "-----------------------
 " VISUAL MODE MAPPINGS
 "-----------------------
