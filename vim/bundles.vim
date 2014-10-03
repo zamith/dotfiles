@@ -8,8 +8,8 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 
 Plugin 'AndrewRadev/sideways.vim'
-Plugin 'christoomey/vim-conflicted'
 Plugin 'danro/rename.vim'
+Plugin 'elixir-lang/vim-elixir'
 Plugin 'ervandew/supertab'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'

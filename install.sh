@@ -25,6 +25,7 @@ safe_link "tmux.conf"
 safe_link "grc"
 safe_link "rspec"
 safe_link "gitconfig"
+safe_link "gemrc"
 
 safe_link "vim"
 

@@ -46,6 +46,3 @@ safe_source "$HOME/.zshrc.local"
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 rm -f ~/.zcompdump; compinit
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

@@ -69,6 +69,16 @@ map <Leader>i gg=G''
 map mr :SidewaysRight<CR>
 map ml :SidewaysLeft<CR>
 
+noremap 1 :tabnext 1<CR>
+noremap 2 :tabnext 2<CR>
+noremap 3 :tabnext 3<CR>
+noremap 4 :tabnext 4<CR>
+noremap 5 :tabnext 5<CR>
+noremap 6 :tabnext 6<CR>
+noremap 7 :tabnext 7<CR>
+noremap 8 :tabnext 8<CR>
+noremap 9 :tablast<CR>
+
 "-----------------------
 " COMMAND MODE MAPPINGS
 "-----------------------

@@ -7,31 +7,41 @@
     icon = /Users/luis/Desktop/octocat.png
     interval = 60
 [alias]
-    lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)[%an]%Creset' --abbrev-commit
-    logme = !git lg --author=zamith
-    lgm = !git lg --first-parent master
-    conflicts = diff --name-only --diff-filter=U
-    delete = branch -D
-    co = checkout
-    ct = commit -v
-    today = log --since=midnight --author='Zamith' --oneline
     br = checkout -b
-    wtf = !git-wtf
+    cb = symbolic-ref HEAD --short
+    co = checkout
+    conflicts = diff --name-only --diff-filter=U
+    ct = commit -v
+    delete = branch -D
     ff = !git fetch && git wtf
-    r = reset HEAD
-    rh = reset --hard HEAD
-    n = !"git ls-files | xargs notes | awk -F: '{ print $1,$2; print $3,$4; print $5}' | grcat conf.notes "
-    rbc = rebase --continue
+    lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)[%an]%Creset' --abbrev-commit
+    logm = !git lg --first-parent master
+    logme = !git lg --author=zamith
     rba = rebase --abort
+    rbc = rebase --continue
     rbs = rebase --skip
-    a = add -A
+    rh = reset --hard
+    sb = !ls .git/refs/remotes/*/$(git cb) | cut -d/ -f4,5 | \
+         xargs git show-branch $(git cb)
+    today = log --since=midnight --author='Zamith' --oneline
 [push]
-	default = current
+    default = current
 [color]
     ui = true
-[web]
-	browser = open
 [core]
-	editor = vim
+    editor = vim
+[mergetool "vimdiff"]
+    cmd = vimdiff -f $LOCAL $MERGED $REMOTE
+[mergetool]
+    prompt = false
+    keepBackup = false
+[merge]
+    tool = vimdiff
+[diff]
+    tool = vimdiff
+[blame]
+    date = short
+[help]
+    autocorrect = 1
 [apply]
-  whitespace = nowarn
+    whitespace = nowarn
