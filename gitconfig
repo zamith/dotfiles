@@ -33,6 +33,7 @@
 [mergetool]
     prompt = false
     keepBackup = false
+    trustExitCode = false
 [merge]
     tool = vimdiff
 [diff]
