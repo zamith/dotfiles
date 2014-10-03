@@ -21,8 +21,6 @@
     rbc = rebase --continue
     rbs = rebase --skip
     rh = reset --hard
-    sb = !ls .git/refs/remotes/*/$(git cb) | cut -d/ -f4,5 | \
-         xargs git show-branch $(git cb)
     today = log --since=midnight --author='Zamith' --oneline
 [push]
     default = current
