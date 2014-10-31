@@ -1,11 +1,7 @@
 [user]
     name = Zamith
     email = zamith.28@gmail.com
-[gui]
-    recentrepo = /Users/luis/NetBeansProjects/TSLEditorProject/tsleditor
-[dude]
-    icon = /Users/luis/Desktop/octocat.png
-    interval = 60
+	signingkey = 28FE3B16
 [alias]
     br = checkout -b
     cb = symbolic-ref HEAD --short
@@ -47,3 +43,5 @@
     whitespace = nowarn
 [interactive]
     singlekey = true
+[commit]
+    gpgsign = true

@@ -14,25 +14,14 @@ alias r="rails"
 alias migrate="bundle exec rake db:migrate && bundle exec rake db:migrate RAILS_ENV=test"
 alias rollback="bundle exec rake db:rollback && bundle exec rake db:rollback RAILS_ENV=test"
 
+# Alias for Ruby
+alias b='bundle'
+alias be='bundle exec'
+alias cuke='cucumber'
+
 # Alias for git
+alias g='git'
 alias gst="git status -sb"
-alias gco='git checkout'
-alias gra='git reset --hard HEAD'
 alias gpr='hub pull-request -b'
 alias gprd='hub pull-request -b dev'
 alias gprb='Use gprd, learn how to write!'
-
-#Group Buddies
-alias b='bundle'
-alias be='bundle exec'
-alias c='cd /Users/zamith/Projects/groupbuddies/coachme-web'
-alias zr='zeus rspec'
-alias cuke='cucumber'
-alias sr='screen -r'
-alias g='git'
-
-# Blip
-alias cukepad="DEVICE_TARGET='iPad Retina (64-bit) - Simulator - iOS 7.1' cucumber"
-alias cukedevice="DEVICE_TARGET='Luis\'s iPad (v7.1) (15d3c44d81d3018471d45de60f7596701d10428e)' cucumber"
-alias cukephone="DEVICE_TARGET='iPhone Retina (4-inch 64-bit) - Simulator - iOS 7.1' cucumber"
-alias padc="DEVICE_TARGET='iPad Retina (64-bit) - Simulator - iOS 7.1' calabash-ios console"

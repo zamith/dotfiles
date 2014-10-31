@@ -46,3 +46,6 @@ safe_source "$HOME/.zshrc.local"
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 rm -f ~/.zcompdump; compinit
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
