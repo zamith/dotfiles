@@ -1,0 +1,2 @@
+val=`git branch 2>/dev/null | grep '^*' | colrm 1 2`
+echo "$val"

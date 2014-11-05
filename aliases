@@ -20,8 +20,11 @@ alias be='bundle exec'
 alias cuke='cucumber'
 
 # Alias for git
-alias g='git'
 alias gst="git status -sb"
 alias gpr='hub pull-request -b'
 alias gprd='hub pull-request -b dev'
 alias gprb='Use gprd, learn how to write!'
+
+# MOAR
+alias map="xargs -n1"
+alias zip="zip -9 -r"

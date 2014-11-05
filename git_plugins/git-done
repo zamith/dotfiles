@@ -1,0 +1,2 @@
+branch=`git branch-name`
+git on-branch "develop" "interactive" && git checkout develop && git merge $branch --ff-only && git push && git nuke $branch

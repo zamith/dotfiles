@@ -1,0 +1,9 @@
+branch=`git branch-name`
+git checkout $1 && git pull --rebase
+git checkout $branch
+if [[ "$2" == "interactive" ]]
+then
+  git rebase -i $1
+else
+  git rebase $1
+fi

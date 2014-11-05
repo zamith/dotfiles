@@ -32,6 +32,9 @@ export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 # Binstubs
 export PATH=".git/safe/../../bin:$PATH"
 
+# Git plugins
+export PATH="$HOME/dotfiles/git_plugins:$PATH"
+
 # NERDTree compatibility with zsh
 export LC_ALL=en_US.utf-8
 export LANG="$LC_ALL"
@@ -41,10 +44,12 @@ export HISTSIZE=4000
 
 safe_source "$HOME/.functions"
 safe_source "$HOME/.aliases"
+safe_source "$HOME/dotfiles/git/git.zsh"
+safe_source "$HOME/dotfiles/git/completion.zsh"
 safe_source "$HOME/dotfiles/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 safe_source "$HOME/.zshrc.local"
 
-fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(/usr/local/share/zsh-completions /usr/local/share/zsh/site-functions $fpath)
 rm -f ~/.zcompdump; compinit
 
 ### Added by the Heroku Toolbelt
