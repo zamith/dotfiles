@@ -11,9 +11,10 @@
     delete = branch -D
     ff = !git fetch && git wtf
     ia = add --intent-to-add -A
-    lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)[%an]%Creset' --abbrev-commit
+    lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)[%an]%Creset %GS' --abbrev-commit
     logm = !git lg --first-parent master
     logme = !git lg --author=zamith
+    mt = mergetool
     rba = rebase --abort
     rbc = rebase --continue
     rbs = rebase --skip

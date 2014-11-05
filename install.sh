@@ -9,6 +9,13 @@ function safe_link()
   fi
 }
 
+function safe_link_dotfiles()
+{
+  if [ ! -h "$HOME/dotfiles" ]; then
+    ln -s "$DOTFILES_FOLDER" "$HOME/dotfiles"
+  fi
+}
+
 function safe_link_program()
 {
   if [ ! -h "$BIN_FOLDER/$1" ]; then
@@ -26,11 +33,12 @@ safe_link "grc"
 safe_link "rspec"
 safe_link "gitconfig"
 safe_link "gemrc"
-
 safe_link "vim"
 
 safe_link_program "notes"
 safe_link_program "replace"
+
+safe_link_dotfiles
 
 if [ ! -h "$HOME/.vimrc" ]; then
   ln -s "$DOTFILES_FOLDER/vim/vimrc" "$HOME/.vimrc"
