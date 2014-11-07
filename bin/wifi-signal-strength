@@ -31,9 +31,4 @@ do
 done
 signal="${signal} )"
 
-if [ "$name" == "" ]
-then
-  echo "no network at ${bandwidth}Mbs"
-else
-  echo "${name} at ${bandwidth}Mbs"
-fi
+echo "${name} ${bandwidth}Mbs ${signal}"
