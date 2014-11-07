@@ -16,14 +16,6 @@ function safe_link_dotfiles()
   fi
 }
 
-function safe_link_program()
-{
-  if [ ! -h "$BIN_FOLDER/$1" ]; then
-    ln -s "$DOTFILES_FOLDER/bin/$1" "$BIN_FOLDER/$1"
-    chmod +x "$BIN_FOLDER/$1"
-  fi
-}
-
 # Link all config files
 safe_link "aliases"
 safe_link "functions"
@@ -34,9 +26,6 @@ safe_link "rspec"
 safe_link "gitconfig"
 safe_link "gemrc"
 safe_link "vim"
-
-safe_link_program "notes"
-safe_link_program "replace"
 
 safe_link_dotfiles
 

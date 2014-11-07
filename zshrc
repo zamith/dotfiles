@@ -35,6 +35,9 @@ export PATH=".git/safe/../../bin:$PATH"
 # Git plugins
 export PATH="$HOME/dotfiles/git_plugins:$PATH"
 
+# My programs
+export PATH="$HOME/dotfiles/bin:$PATH"
+
 # NERDTree compatibility with zsh
 export LC_ALL=en_US.utf-8
 export LANG="$LC_ALL"
@@ -54,3 +57,6 @@ rm -f ~/.zcompdump; compinit
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# git-go config
+export GH_LOGIN="zamith"
