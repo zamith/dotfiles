@@ -11,7 +11,7 @@ set -e
 
 # run over files and grep out interesting bits
 for f in "$@"
-do echo "$f:"
-   grep -e '^[ 	]*\(class\|module\|def\|alias\|alias_method\|private\)\(\s\|$\)' "$f" |
+do echo "${YELLOW}$f:${RESET}"
+   grep -e '^[ ]*\(class\|module\|def\|alias\|alias_method\|private\)\(\s\|$\)' "$f" |
    sed 's/^/  /'
 done

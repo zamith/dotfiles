@@ -45,6 +45,7 @@ export LANG="$LC_ALL"
 # Keep more history
 export HISTSIZE=4000
 
+safe_source "$HOME/dotfiles/zsh/colors"
 safe_source "$HOME/.functions"
 safe_source "$HOME/.aliases"
 safe_source "$HOME/dotfiles/git/git.zsh"
