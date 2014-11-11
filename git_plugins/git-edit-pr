@@ -1,0 +1,13 @@
+#!/bin/sh
+
+REPO=$(git config --get remote.origin.url | perl -ne '/:(.+\/.+)\./ && print $1')
+NEW_BRANCH="pull-$1"
+
+git show-ref --verify --quiet refs/heads/$NEW_BRANCH
+if [ $? == 0 ]; then
+  git checkout $NEW_BRANCH
+else
+  git checkout -b $NEW_BRANCH
+fi
+
+hub am -q https://github.com/$REPO/pull/$1
