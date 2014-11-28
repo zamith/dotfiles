@@ -51,6 +51,7 @@ safe_source "$HOME/.aliases"
 safe_source "$HOME/dotfiles/git/git.zsh"
 safe_source "$HOME/dotfiles/git/completion.zsh"
 safe_source "$HOME/dotfiles/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+safe_source "$HOME/dotfiles/zsh/z.sh"
 safe_source "$HOME/.zshrc.local"
 
 fpath=(/usr/local/share/zsh-completions /usr/local/share/zsh/site-functions $fpath)
