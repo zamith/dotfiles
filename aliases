@@ -2,6 +2,7 @@
 alias ls="ls -G"
 alias a="ls -a"
 alias curl="/usr/bin/curl"
+alias rebash="source ~/.zshrc"
 
 #Shortcuts
 alias up2="cd ../.."
