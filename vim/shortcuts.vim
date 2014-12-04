@@ -65,6 +65,9 @@ map <silent> <Leader>o :NERDTreeToggle<CR>
 " Indent complete file
 map <Leader>i gg=G''
 
+" Change ruby hash syntax from 1.8 to 1.9
+nmap <silent> chs <esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
+
 " Sideways vim
 map mr :SidewaysRight<CR>
 map ml :SidewaysLeft<CR>
