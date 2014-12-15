@@ -14,6 +14,6 @@ hex2str()
   echo ""
 }
 
-s() {
+dash() {
   open dash://$1:$2
 }

@@ -1,26 +1,31 @@
-#Basics
+# Basics
 alias ls="ls -G"
 alias a="ls -a"
 alias curl="/usr/bin/curl"
 alias rebash="source ~/.zshrc"
 
-#Shortcuts
+# Shortcuts
 alias up2="cd ../.."
 alias up3="cd ../../.."
 alias up4="cd ../../../.."
 alias up5="cd ../../../../.."
 
-# Alias for RoR
+# Aliases for RoR
 alias r="rails"
 alias migrate="bundle exec rake db:migrate && bundle exec rake db:migrate RAILS_ENV=test"
 alias rollback="bundle exec rake db:rollback && bundle exec rake db:rollback RAILS_ENV=test"
 
-# Alias for Ruby
+# Uniform repos aliases
+alias s="bin/server"
+alias deploy="bin/deploy"
+alias setup="bin/setup"
+
+# Aliases for Ruby
 alias b='bundle'
 alias be='bundle exec'
 alias cuke='cucumber'
 
-# Alias for git
+# Aliases for git
 alias gst="echo 'Use g instead'"
 alias gpr='hub pull-request -b'
 alias gprd='hub pull-request -b dev'
