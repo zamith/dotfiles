@@ -52,6 +52,10 @@ map vimrc :tabe ~/.vim/vimrc<CR>
 " Open zshrc
 map sh :tabe ~/.zshrc
 
+" Open Calendar
+map cal :Calendar<CR>
+map time :Calendar -view=clock<CR>
+
 " Change all double to single quotes
 map <silent> sq <esc>:%s/"\([^"]*\)"/'\1'/g<CR>
 

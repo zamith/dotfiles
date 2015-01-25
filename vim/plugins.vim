@@ -1,6 +1,6 @@
 " Vim rspec configs
 let g:rspec_runner = "os_x_iterm"
-let g:rspec_command = "!bundle exec bin/rspec {spec}"
+let g:rspec_command = "Dispatch rspec {spec}"
 
 " The Silver Searcher
 if executable('ag')
@@ -19,3 +19,6 @@ let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;
 
 " SnipMate snippets dir
 let g:snippets_dir = "~/.vim/snippets"
+
+" calendar.vim
+let g:calendar_google_calendar = 1

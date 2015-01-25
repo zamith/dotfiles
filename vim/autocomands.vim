@@ -13,6 +13,7 @@ augroup END
 if has("autocmd")
   " Remove trailing whitespaces
   autocmd BufWritePre <buffer> :%s/\s\+$//e
+  autocmd BufWritePre * :%s/\s\+$//e
 
   " Disable auto comment insertion
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -20,11 +21,8 @@ if has("autocmd")
   " Enable rvm
   " autocmd BufEnter * Rvm
 
-  " NERDTree when no files
-  autocmd vimenter * if !argc() | NERDTree | endif
-
-  " Delete trailing whitespace
-  autocmd BufWritePre * :%s/\s\+$//e
+  " Use octodown as default build command for Markdown files
+  autocmd FileType markdown let b:dispatch = 'octodown %'
 
   autocmd! vimenter,BufReadPost,BufNewFile * call SetupEnv()
 endif

@@ -26,7 +26,10 @@ set clipboard=unnamed
 set nobackup
 set nowritebackup
 set noswapfile
-set noundofile
+
+" Persistent undos
+set undodir=~/.vim/undodir
+set undofile
 
 " Automatically write before running commands
 set autowrite
@@ -56,7 +59,6 @@ set noerrorbells
 set list
 
 set listchars=tab:--,trail:.,nbsp:.
-set pastetoggle=<C-p>
 
 set relativenumber
 set number

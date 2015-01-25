@@ -32,5 +32,6 @@ alias gprd='hub pull-request -b dev'
 alias gprb="echo 'Use gprd, learn how to write!'"
 
 # MOAR
+alias highlight="highlight -O rtf -t 2 -K 40 -k 'Source Code Pro'"
 alias map="xargs -n1"
 alias zip="zip -9 -r"
