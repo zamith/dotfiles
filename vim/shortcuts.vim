@@ -50,7 +50,7 @@ nnoremap <silent> <Leader>q <Esc>:q<cr>
 map vimrc :tabe ~/.vim/vimrc<CR>
 
 " Open zshrc
-map sh :tabe ~/.zshrc
+map sh :tabe ~/.zshrc<CR>
 
 " Open Calendar
 map cal :Calendar<CR>
@@ -58,10 +58,6 @@ map time :Calendar -view=clock<CR>
 
 " Change all double to single quotes
 map <silent> sq <esc>:%s/"\([^"]*\)"/'\1'/g<CR>
-
-" Ruby test
-map <Leader>r <Plug>RubyTestRun
-map <Leader>R <Plug>RubyFileRun
 
 " NERDTree
 map <silent> <Leader>o :NERDTreeToggle<CR>
@@ -123,3 +119,11 @@ command! Rroutes :e config/routes.rb
 
 " Open rails factories file
 command! Rfactories :e spec/factories.rb
+
+" xmpfilter mappings
+nmap <buffer> <leader>r <Plug>(xmpfilter-run)
+xmap <buffer> <leader>r <Plug>(xmpfilter-run)
+imap <buffer> <leader>r <Plug>(xmpfilter-run)
+nmap <buffer> <leader>m <Plug>(xmpfilter-mark)
+xmap <buffer> <leader>m <Plug>(xmpfilter-mark)
+imap <buffer> <leader>m <Plug>(xmpfilter-mark)

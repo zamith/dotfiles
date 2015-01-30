@@ -1,7 +1,7 @@
 [user]
     name = Zamith
     email = zamith.28@gmail.com
-	signingkey = 28FE3B16
+    signingkey = 28FE3B16
 [alias]
     br = checkout -b
     cb = symbolic-ref HEAD --short
