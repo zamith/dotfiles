@@ -1,6 +1,6 @@
 " Vim rspec configs
 let g:rspec_runner = "os_x_iterm"
-let g:rspec_command = "Dispatch rspec {spec}"
+let g:rspec_command = "Dispatch bundle exec rspec {spec}"
 
 " The Silver Searcher
 if executable('ag')

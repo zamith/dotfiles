@@ -51,7 +51,6 @@ set backspace=indent,eol,start
 set autoindent
 set copyindent
 set shiftround
-set nohlsearch
 set undolevels=1000
 set title
 set visualbell
@@ -66,3 +65,5 @@ set number
 " More natural split opening
 set splitbelow
 set splitright
+
+highlight Search ctermbg=234 ctermfg=15 cterm=underline

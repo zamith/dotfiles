@@ -13,7 +13,7 @@ nnoremap fd <C-]>
 nnoremap rc :g/^ *#.*/d<CR>
 
 " Toggle search highlight
-nmap <silent> ,. :hlsearch!<CR>
+nmap <silent> ,. :set hlsearch!<CR>
 
 " Do not jump over wrapped lines
 nnoremap j gj
@@ -61,6 +61,7 @@ map <silent> sq <esc>:%s/"\([^"]*\)"/'\1'/g<CR>
 
 " NERDTree
 map <silent> <Leader>o :NERDTreeToggle<CR>
+map <silent> <Leader>nf :NERDTreeFind<CR>
 
 " Indent complete file
 map <Leader>i gg=G''
@@ -123,7 +124,5 @@ command! Rfactories :e spec/factories.rb
 " xmpfilter mappings
 nmap <buffer> <leader>r <Plug>(xmpfilter-run)
 xmap <buffer> <leader>r <Plug>(xmpfilter-run)
-imap <buffer> <leader>r <Plug>(xmpfilter-run)
 nmap <buffer> <leader>m <Plug>(xmpfilter-mark)
 xmap <buffer> <leader>m <Plug>(xmpfilter-mark)
-imap <buffer> <leader>m <Plug>(xmpfilter-mark)

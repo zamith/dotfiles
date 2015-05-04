@@ -1,2 +1,3 @@
+destination=${1:-develop}
 branch=`git branch-name`
-git on-branch "develop" "interactive" && git checkout develop && git merge $branch --ff-only && git push && git nuke $branch
+git on-branch $destination "interactive" && git push -f && git checkout $destination && git merge $branch --ff-only && git push && git nuke $branch
