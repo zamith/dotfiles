@@ -3,6 +3,7 @@
     email = zamith.28@gmail.com
     signingkey = 28FE3B16
 [alias]
+    ap = add -p
     br = checkout -b
     cb = symbolic-ref HEAD --short
     co = checkout
@@ -20,12 +21,15 @@
     rbs = rebase --skip
     rh = reset --hard
     today = log --since=midnight --author='Zamith' --oneline
+	uncommit = reset --soft HEAD^
+	unstage = reset
 [push]
     default = current
 [color]
     ui = true
 [core]
     editor = vim
+    pager = diff-so-fancy | less --tabs=1,5 -R
 [mergetool "vimdiff"]
     cmd = vimdiff -f $LOCAL $MERGED $REMOTE
 [mergetool]
@@ -44,7 +48,12 @@
     whitespace = nowarn
 [interactive]
     singlekey = true
-[commit]
-    gpgsign = true
 [rerere]
     enabled = true
+[commit]
+    template = ~/.gitmessage
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22

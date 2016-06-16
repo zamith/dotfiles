@@ -1,0 +1,3 @@
+#!/bin/sh
+
+crontab -l | { cat; echo "0 10-18 * * 1-5 /usr/bin/osascript -e 'display notification \"Have you commited yet?\" with title \"Commit your work\"'"; } | crontab -

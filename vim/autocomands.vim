@@ -13,7 +13,7 @@ augroup END
 if has("autocmd")
   " Remove trailing whitespaces
   autocmd BufWritePre <buffer> :%s/\s\+$//e
-  autocmd BufWritePre * :%s/\s\+$//e
+  autocmd BufWritePre * silent! :%s/\s\+$//e
 
   " Disable auto comment insertion
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -21,8 +21,13 @@ if has("autocmd")
   " Enable rvm
   " autocmd BufEnter * Rvm
 
-  " Use octodown as default build command for Markdown files
   autocmd FileType markdown let b:dispatch = 'octodown %'
+  autocmd FileType rust let b:dispatch = 'cargo build'
+  autocmd FileType crystal let b:dispatch = 'crystal %'
 
   autocmd! vimenter,BufReadPost,BufNewFile * call SetupEnv()
+
+  autocmd BufNewFile,BufRead *.tag set ft=html
+
+  autocmd! BufWritePost * Neomake
 endif

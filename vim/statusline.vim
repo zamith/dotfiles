@@ -15,3 +15,4 @@ set statusline+=\ %{'('.fugitive#head().')'} "git branch
 
 " Highlight the status line
 highlight StatusLine ctermbg=black
+

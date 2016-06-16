@@ -25,23 +25,19 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" Stupid 'murichans
-map º [
-map ´ ]
-
 " RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+" map <Leader>t <Plug>RunCurrentSpecFile
+" map <Leader>s <Plug>RunFocusedSpec
+" map <Leader>l <Plug>RunMostRecentSpec
+" map <Leader>a :call RunAllSpecs()<CR>
+
+map <Leader>t :call neoterm#test#run('file')<cr>
+map <Leader>s :call neoterm#test#run('current')<cr>
+map <Leader>l <Plug>RunMostRecentSpec
+map <Leader>a :call neoterm#test#run('all')<cr>
 
 " Bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
-
-" Bind <C-f> to grep shortcut
-nnoremap <C-f> :Ack<SPACE>
-
-nnoremap <C-n> :call NumberToggle()<cr>
 
 " Remap buffer closing
 nnoremap <silent> <Leader>q <Esc>:q<cr>
@@ -52,12 +48,11 @@ map vimrc :tabe ~/.vim/vimrc<CR>
 " Open zshrc
 map sh :tabe ~/.zshrc<CR>
 
-" Open Calendar
-map cal :Calendar<CR>
-map time :Calendar -view=clock<CR>
-
 " Change all double to single quotes
 map <silent> sq <esc>:%s/"\([^"]*\)"/'\1'/g<CR>
+
+" Change all single to double quotes
+map <silent> dq <esc>:%s/'\([^']*\)'/"\1"/g<CR>
 
 " NERDTree
 map <silent> <Leader>o :NERDTreeToggle<CR>
@@ -73,15 +68,17 @@ nmap <silent> chs <esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 map mr :SidewaysRight<CR>
 map ml :SidewaysLeft<CR>
 
-noremap <leader>1 :tabnext 1<CR>
-noremap <leader>2 :tabnext 2<CR>
-noremap <leader>3 :tabnext 3<CR>
-noremap <leader>4 :tabnext 4<CR>
-noremap <leader>5 :tabnext 5<CR>
-noremap <leader>6 :tabnext 6<CR>
-noremap <leader>7 :tabnext 7<CR>
-noremap <leader>8 :tabnext 8<CR>
-noremap <leader>9 :tablast<CR>
+" WIP commit
+nmap <Leader>wip <esc>:!git commit -am "wip"<CR>
+
+nnoremap <Leader>d :Dispatch<CR>
+
+" fzf bindings
+nmap <C-p> :Files<CR>
+nmap <C-f> :Ag<CR>
+
+" run syntastic
+nnoremap <leader>c :Neomake<CR>
 
 "-----------------------
 " COMMAND MODE MAPPINGS
@@ -120,6 +117,9 @@ command! Rroutes :e config/routes.rb
 
 " Open rails factories file
 command! Rfactories :e spec/factories.rb
+
+" See rails test log
+command! Rtestlog :vs | terminal tail -n 200 log/test.log
 
 " xmpfilter mappings
 nmap <buffer> <leader>r <Plug>(xmpfilter-run)

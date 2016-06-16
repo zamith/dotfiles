@@ -13,7 +13,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="ys"
+ZSH_THEME="zamith"
 
 # Uncomment following line if you want to disable command autocorrection
 DISABLE_CORRECTION="true"
@@ -27,7 +27,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:usr/texbin:/usr/X11/bin:$HOME/Scripts:/usr/local/share/npm/bin:$PATH"
-export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+# export SSL_CERT_FILE="/usr/local/etc/openssl/cert.pem"
+# export SSL_CERT_FILE="/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt"
 
 # Binstubs
 export PATH=".git/safe/../../bin:$PATH"
@@ -62,3 +63,15 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # git-go config
 export GH_LOGIN="zamith"
+
+export EDITOR="vim"
+
+# Add cargo binaries to the PATH
+export PATH="$HOME/.cargo/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export TERMINFO="$HOME/.terminfo"
+
+export GOPATH="/Users/zamith/.go/"
+export PATH="$GOPATH/bin:$PATH"

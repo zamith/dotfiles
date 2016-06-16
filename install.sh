@@ -26,11 +26,16 @@ safe_link "rspec"
 safe_link "gitconfig"
 safe_link "gemrc"
 safe_link "vim"
+safe_link "nvim"
 
 safe_link_dotfiles
 
 if [ ! -h "$HOME/.vimrc" ]; then
   ln -s "$DOTFILES_FOLDER/vim/vimrc" "$HOME/.vimrc"
+fi
+
+if [ ! -h "$HOME/.xvimrc" ]; then
+  ln -s "$DOTFILES_FOLDER/xcode/xvimrc" "$HOME/.xvimrc"
 fi
 
 # Install oh-my-zsh
@@ -56,4 +61,4 @@ do
 done
 
 # Homebrew formulas
-brew bundle
+# brew bundle

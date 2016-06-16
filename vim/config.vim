@@ -7,7 +7,7 @@ filetype plugin indent on
 runtime macros/matchit.vim
 
 " Set my font
-set guifont=Monaco:h14
+set guifont=Monaco\ for\ Powerline:h14
 
 " Disable mouse
 set mouse=""
