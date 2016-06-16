@@ -21,15 +21,15 @@
     rbs = rebase --skip
     rh = reset --hard
     today = log --since=midnight --author='Zamith' --oneline
-	uncommit = reset --soft HEAD^
-	unstage = reset
+    uncommit = reset --soft HEAD^
+    unstage = reset
 [push]
     default = current
 [color]
     ui = true
 [core]
     editor = vim
-    pager = diff-so-fancy | less --tabs=1,5 -R
+    pager = diff-so-fancy | less --tabs=1,5 -RFX
 [mergetool "vimdiff"]
     cmd = vimdiff -f $LOCAL $MERGED $REMOTE
 [mergetool]
@@ -40,6 +40,7 @@
     tool = vimdiff
 [diff]
     tool = vimdiff
+    compactionHeuristic = true
 [blame]
     date = short
 [help]
