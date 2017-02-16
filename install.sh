@@ -34,6 +34,10 @@ if [ ! -h "$HOME/.vimrc" ]; then
   ln -s "$DOTFILES_FOLDER/vim/vimrc" "$HOME/.vimrc"
 fi
 
+if [ ! -h "$HOME/.git_templates" ]; then
+  ln -s "$DOTFILES_FOLDER/git/git_templates" "$HOME/.git_templates"
+fi
+
 if [ ! -h "$HOME/.xvimrc" ]; then
   ln -s "$DOTFILES_FOLDER/xcode/xvimrc" "$HOME/.xvimrc"
 fi

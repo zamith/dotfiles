@@ -11,23 +11,26 @@ augroup vimrcEx
 augroup END
 
 if has("autocmd")
-  " Remove trailing whitespaces
-  autocmd BufWritePre <buffer> :%s/\s\+$//e
-  autocmd BufWritePre * silent! :%s/\s\+$//e
+  augroup otherStuff
+    autocmd!
+    " Remove trailing whitespaces
+    autocmd BufWritePre <buffer> :%s/\s\+$//e
+    autocmd BufWritePre * silent! :%s/\s\+$//e
 
-  " Disable auto comment insertion
-  autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    " Disable auto comment insertion
+    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-  " Enable rvm
-  " autocmd BufEnter * Rvm
+    " Enable rvm
+    " autocmd BufEnter * Rvm
 
-  autocmd FileType markdown let b:dispatch = 'octodown %'
-  autocmd FileType rust let b:dispatch = 'cargo build'
-  autocmd FileType crystal let b:dispatch = 'crystal %'
+    autocmd FileType markdown let b:dispatch = 'octodown %'
+    autocmd FileType rust let b:dispatch = 'cargo build'
+    autocmd FileType crystal let b:dispatch = 'crystal %'
 
-  autocmd! vimenter,BufReadPost,BufNewFile * call SetupEnv()
+    " autocmd! vimenter,BufReadPost,BufNewFile * call SetupEnv()
 
-  autocmd BufNewFile,BufRead *.tag set ft=html
+    autocmd BufNewFile,BufRead *.tag set ft=html
 
-  autocmd! BufWritePost * Neomake
+    autocmd! BufWritePost * Neomake
+  augroup END
 endif

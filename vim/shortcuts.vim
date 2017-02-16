@@ -31,10 +31,11 @@ map <C-l> <C-w>l
 " map <Leader>l <Plug>RunMostRecentSpec
 " map <Leader>a :call RunAllSpecs()<CR>
 
-map <Leader>t :call neoterm#test#run('file')<cr>
-map <Leader>s :call neoterm#test#run('current')<cr>
-map <Leader>l <Plug>RunMostRecentSpec
-map <Leader>a :call neoterm#test#run('all')<cr>
+nmap <silent> <Leader>t :TestFile<CR>
+nmap <silent> <Leader>s :TestNearest<CR>
+nmap <silent> <Leader>l :TestLast<CR>
+nmap <silent> <Leader>a :TestSuite<CR>
+nmap <silent> <Leader>g :TestVisit<CR>
 
 " Bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>

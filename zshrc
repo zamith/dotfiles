@@ -75,3 +75,9 @@ export TERMINFO="$HOME/.terminfo"
 
 export GOPATH="/Users/zamith/.go/"
 export PATH="$GOPATH/bin:$PATH"
+
+# Alt+l
+bindkey '‘' clear-screen
+
+# Use ripgrep for FZF
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'

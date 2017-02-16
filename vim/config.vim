@@ -35,8 +35,8 @@ set undofile
 set autowrite
 
 " Highlights current line and column
-set cursorcolumn
-set cursorline
+" set cursorcolumn
+" set cursorline
 
 " CTags settings
 set tags=./tags;

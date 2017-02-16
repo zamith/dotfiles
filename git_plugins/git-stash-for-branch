@@ -1,0 +1,2 @@
+branch=`git branch-name`
+git stash list | grep "^stash@.* $branch:"

@@ -58,3 +58,9 @@
     oldHighlight = red bold 52
     newNormal = green bold
     newHighlight = green bold 22
+[credential]
+    helper = osxkeychain
+[credential "https://github.com"]
+    username = zamith
+[init]
+	templatedir = ~/.git-templates
