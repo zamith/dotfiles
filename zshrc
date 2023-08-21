@@ -26,7 +26,8 @@ plugins=(osx)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:usr/texbin:/usr/X11/bin:$HOME/Scripts:/usr/local/share/npm/bin:$PATH"
+export PATH=""
+export PATH="/usr/local/bin:/Users/zamith/homebrew/bin:/usr/local/Homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:usr/texbin:/usr/X11/bin:$HOME/Scripts:/usr/local/share/npm/bin:$PATH"
 # export SSL_CERT_FILE="/usr/local/etc/openssl/cert.pem"
 # export SSL_CERT_FILE="/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt"
 
@@ -40,7 +41,7 @@ export PATH="$HOME/dotfiles/git_plugins:$PATH"
 export PATH="$HOME/dotfiles/bin:$PATH"
 
 # NERDTree compatibility with zsh
-export LC_ALL=en_US.utf-8
+export LC_ALL="en_US.utf-8"
 export LANG="$LC_ALL"
 
 # Keep more history
@@ -81,3 +82,43 @@ bindkey '‘' clear-screen
 
 # Use ripgrep for FZF
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+
+# Enable iex history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+# asdf configs
+. $HOME/.asdf/asdf.sh
+source /Users/zamith/.asdf/installs/rust/nightly/env
+
+eval "$(direnv hook zsh)"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:node_modules/.bin:$PATH"
+
+# Android dev paths
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH="/usr/local/opt/gettext/bin:$PATH"
+
+# Solana path
+export PATH="/Users/zamith/.local/share/solana/install/active_release/bin:$PATH"
+
+# Needed for hardhat
+# export NODE_OPTIONS=--openssl-legacy-provider
+
+export PATH="$PATH:/Users/zamith/.foundry/bin"
+export PATH="$PATH:/Users/zamith/.protostar/dist/protostar"
+export PATH="$PATH:/Users/zamith/.utrust-cli/bin"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+
+export PATH="$PATH:/Users/zamith/.fly/bin"
+
+# eval "$(starship init zsh)"
+
+# Switch to ARM homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Switch to x86_64 homebrew
+# eval "$(/usr/local/homebrew/bin/brew shellenv)"

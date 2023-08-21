@@ -1,6 +1,6 @@
 [user]
     name = Zamith
-    email = zamith.28@gmail.com
+    email = luis@zamith.pt
     signingkey = 28FE3B16
 [alias]
     ap = add -p
@@ -23,15 +23,16 @@
     today = log --since=midnight --author='Zamith' --oneline
     uncommit = reset --soft HEAD^
     unstage = reset
+    week = lg --since @{1.week.ago}
 [push]
     default = current
 [color]
     ui = true
 [core]
-    editor = vim
+    editor = nvim
     pager = diff-so-fancy | less --tabs=1,5 -RFX
 [mergetool "vimdiff"]
-    cmd = vimdiff -f $LOCAL $MERGED $REMOTE
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\" -c 'wincmd w' -c 'wincmd J'"
 [mergetool]
     prompt = false
     keepBackup = false
@@ -64,3 +65,8 @@
     username = zamith
 [init]
 	templatedir = ~/.git-templates
+	defaultBranch = master
+[grep]
+	extendedRegexp = true
+[includeIf "gitdir:~/Projects/subvisual/clients/qonto/"]
+  path = ~/Projects/subvisual/clients/qonto/.gitconfig_qonto

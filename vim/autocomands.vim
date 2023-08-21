@@ -20,9 +20,7 @@ if has("autocmd")
     " Disable auto comment insertion
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-    " Enable rvm
-    " autocmd BufEnter * Rvm
-
+    autocmd FileType markdown set nospell
     autocmd FileType markdown let b:dispatch = 'octodown %'
     autocmd FileType rust let b:dispatch = 'cargo build'
     autocmd FileType crystal let b:dispatch = 'crystal %'
@@ -30,7 +28,20 @@ if has("autocmd")
     " autocmd! vimenter,BufReadPost,BufNewFile * call SetupEnv()
 
     autocmd BufNewFile,BufRead *.tag set ft=html
+    autocmd BufNewFile,BufRead *.slimeex set ft=slim
+    autocmd BufNewFile,BufRead *.slimleex set ft=slim
+    autocmd BufNewFile,BufRead *.heex set ft=eelixir
+    autocmd BufNewFile,BufRead *.sface set ft=eelixir
+    au BufNewFile,BufRead *.ts set filetype=typescript
+    au BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
-    autocmd! BufWritePost * Neomake
+    autocmd FileType neoterm nmap <silent> <buffer> <leader>q :quit!<CR>
+
+    " autocmd! BufWritePost * Neomake
+  augroup END
+
+  augroup my_neomake_hooks
+    au!
+    autocmd User NeomakeJobFinished :checktime
   augroup END
 endif

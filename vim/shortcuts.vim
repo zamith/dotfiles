@@ -25,12 +25,6 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" RSpec.vim mappings
-" map <Leader>t <Plug>RunCurrentSpecFile
-" map <Leader>s <Plug>RunFocusedSpec
-" map <Leader>l <Plug>RunMostRecentSpec
-" map <Leader>a :call RunAllSpecs()<CR>
-
 nmap <silent> <Leader>t :TestFile<CR>
 nmap <silent> <Leader>s :TestNearest<CR>
 nmap <silent> <Leader>l :TestLast<CR>
@@ -64,6 +58,8 @@ map <Leader>i gg=G''
 
 " Change ruby hash syntax from 1.8 to 1.9
 nmap <silent> chs <esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
+" And reverse it in visual mode
+vmap <silent> chsr :'<,'>s/\([^ ]*\):/"\1" =>/g
 
 " Sideways vim
 map mr :SidewaysRight<CR>
@@ -127,3 +123,15 @@ nmap <buffer> <leader>r <Plug>(xmpfilter-run)
 xmap <buffer> <leader>r <Plug>(xmpfilter-run)
 nmap <buffer> <leader>m <Plug>(xmpfilter-mark)
 xmap <buffer> <leader>m <Plug>(xmpfilter-mark)
+
+" coc.nvim mappings
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+
+" Terminal
+if has('nvim')
+  tmap <leader>q <C-\><C-n>
+end

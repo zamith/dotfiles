@@ -3,7 +3,7 @@ alias ls="ls -G"
 alias a="ls -a"
 alias curl="/usr/bin/curl"
 alias rebash="source ~/.zshrc"
-alias v="nvim"
+alias v="nvim -u ~/.vimrc"
 
 # Shortcuts
 alias up2="cd ../.."
@@ -27,12 +27,18 @@ alias be='bundle exec'
 alias cuke='cucumber'
 
 # Aliases for git
-alias gst="echo 'Use g instead'"
 alias gpr='hub pull-request -b'
-alias gprd='hub pull-request -b dev'
-alias gprb="echo 'Use gprd, learn how to write!'"
 
 # MOAR
 alias highlight="highlight -O rtf -t 2 -K 40 -k 'Source Code Pro'"
 alias map="xargs -n1"
 alias zip="zip -9 -r"
+
+# Aliases for gitwalker
+alias gw="mix gitwalker"
+
+alias inflate="ruby -r zlib -e 'puts Zlib::Inflate.inflate(STDIN.read)'"
+
+alias u="utrust"
+
+alias oldbrew=/usr/local/bin/brew
