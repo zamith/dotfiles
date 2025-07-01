@@ -33,7 +33,7 @@ if has("autocmd")
     autocmd BufNewFile,BufRead *.heex set ft=eelixir
     autocmd BufNewFile,BufRead *.sface set ft=eelixir
     au BufNewFile,BufRead *.ts set filetype=typescript
-    au BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+    au BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
     autocmd FileType neoterm nmap <silent> <buffer> <leader>q :quit!<CR>
 

@@ -27,6 +27,9 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Hide tabline
+set showtabline=0
+
 " Persistent undos
 set undodir=~/.vim/undodir
 set undofile

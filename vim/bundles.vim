@@ -11,6 +11,7 @@ Plug 'dense-analysis/ale'
 Plug 'digitaltoad/vim-pug'
 Plug 'embear/vim-localvimrc'
 Plug 'elixir-editors/vim-elixir'
+Plug 'ellisonleao/gruvbox.nvim'
 Plug 'ElmCast/elm-vim'
 Plug 'ervandew/supertab'
 Plug 'github/copilot.vim', {'branch': 'release'}
@@ -25,6 +26,8 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'miguelmota/cairo.vim'
 Plug 'mhinz/vim-mix-format'
 Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'pechorin/any-jump.vim'
 Plug 'rhysd/vim-crystal'
 Plug 'scrooloose/nerdtree'
@@ -32,6 +35,7 @@ Plug 'skwp/greplace.vim'
 Plug 'slashmili/alchemist.vim'
 Plug 'slim-template/vim-slim'
 Plug 'radenling/vim-dispatch-neovim'
+Plug 'ravitemer/mcphub.nvim'
 Plug 'tomlion/vim-solidity'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -54,6 +58,18 @@ Plug 'vim-scripts/SyntaxRange'
 Plug 'wellle/targets.vim'
 Plug 'wting/rust.vim'
 Plug 'yuezk/vim-js'
+
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'stevearc/dressing.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
+
+autocmd VimEnter * lua require('mcphub').setup()
+Plug 'olimorris/codecompanion.nvim'
+autocmd VimEnter * lua require('codecompanion').setup()
+" Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+" autocmd VimEnter * lua require('avante').setup()
 
 set rtp+=/usr/local/opt/fzf
 

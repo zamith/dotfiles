@@ -74,9 +74,6 @@ nnoremap <Leader>d :Dispatch<CR>
 nmap <C-p> :Files<CR>
 nmap <C-f> :Ag<CR>
 
-" run syntastic
-nnoremap <leader>c :Neomake<CR>
-
 "-----------------------
 " COMMAND MODE MAPPINGS
 "-----------------------

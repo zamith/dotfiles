@@ -10,7 +10,7 @@
     conflicts = diff --name-only --diff-filter=U
     ct = commit -v
     delete = branch -D
-    ff = !git fetch && git wtf
+    ff = !git fetch && git rebase
     ia = add --intent-to-add -A
     lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)[%an]%Creset %GS' --abbrev-commit
     logm = !git lg --first-parent master
@@ -70,3 +70,10 @@
 	extendedRegexp = true
 [includeIf "gitdir:~/Projects/subvisual/clients/qonto/"]
   path = ~/Projects/subvisual/clients/qonto/.gitconfig_qonto
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[safe]
+	directory = *

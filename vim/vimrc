@@ -1,8 +1,9 @@
 source ~/.vim/bundles.vim
-source ~/.vim/colors.vim
+lua dofile(os.getenv("HOME") .. "/.vim/lua/colors.lua")
 source ~/.vim/functions.vim
 source ~/.vim/config.vim
 source ~/.vim/autocomands.vim
 source ~/.vim/plugins.vim
 source ~/.vim/shortcuts.vim
+lua dofile(os.getenv("HOME") .. "/.vim/lua/plugins.lua")
 source ~/.vim/statusline.vim

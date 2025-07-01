@@ -13,10 +13,8 @@ endfunction
 let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
 let g:test#transformation = 'elixir_umbrella'
 
-let test#custom_runners = {'typescript': ['hardhat']}
-
 " let test#elixir#exunit#executable = 'bin/test'
-let test#strategy = "neoterm"
+let g:test#strategy = "neoterm"
 let g:test#preserve_screen = 0
 
 let g:neoterm_default_mod = "botright"
@@ -77,7 +75,8 @@ let g:ale_linters = {
 \ 'ruby': ['standardrb'],
 \ 'solidity': ['solhint'],
 \ 'javascript': ['prettier'],
-\ 'typescript': ['prettier'],
+\ 'typescript': ['biome', 'tsc', 'tserver'],
+\ 'typescriptreact': ['biome'],
 \ 'elixir': ['mix', 'credo']
 \}
 
@@ -86,7 +85,8 @@ let g:ale_fixers = {
 \ 'ruby': ['standardrb'],
 \ 'solidity': ['forgefmt'],
 \ 'javascript': ['prettier'],
-\ 'typescript': ['prettier'],
+\ 'typescript': ['biome'],
+\ 'typescriptreact': ['biome'],
 \ 'elixir': ['mix_format']
 \}
 
@@ -99,3 +99,5 @@ let g:any_jump_grouping_enabled = 1
 let g:localvimrc_ask = 0
 
 let g:cairo_linter_autosave = 1
+
+let g:copilot_node_command = "~/.asdf/installs/nodejs/22.3.0/bin/node"

@@ -47,6 +47,9 @@ export LANG="$LC_ALL"
 # Keep more history
 export HISTSIZE=4000
 
+# Switch to ARM homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 safe_source "$HOME/dotfiles/zsh/colors"
 safe_source "$HOME/.functions"
 safe_source "$HOME/.aliases"
@@ -56,8 +59,6 @@ safe_source "$HOME/dotfiles/zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highl
 safe_source "$HOME/dotfiles/zsh/z.sh"
 safe_source "$HOME/.zshrc.local"
 
-fpath=(/usr/local/share/zsh-completions /usr/local/share/zsh/site-functions $fpath)
-rm -f ~/.zcompdump; compinit
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -117,8 +118,6 @@ export PATH="$PATH:/Users/zamith/.fly/bin"
 
 # eval "$(starship init zsh)"
 
-# Switch to ARM homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Switch to x86_64 homebrew
 # eval "$(/usr/local/homebrew/bin/brew shellenv)"

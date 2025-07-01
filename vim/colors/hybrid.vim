@@ -66,6 +66,7 @@ endif
 
 set background=dark
 hi clear
+colorscheme vim
 
 if exists("syntax_on")
   syntax reset
