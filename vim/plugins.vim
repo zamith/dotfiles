@@ -74,7 +74,7 @@ execute ale#fix#registry#Add('forgefmt', 'FormatSolidity', ['solidity'], 'forge 
 let g:ale_linters = {
 \ 'ruby': ['standardrb'],
 \ 'solidity': ['solhint'],
-\ 'javascript': ['prettier'],
+\ 'javascript': ['biome'],
 \ 'typescript': ['biome', 'tsc', 'tserver'],
 \ 'typescriptreact': ['biome'],
 \ 'elixir': ['mix', 'credo']
@@ -84,7 +84,7 @@ let g:ale_fixers = {
 \ '*': ['remove_trailing_lines', 'trim_whitespace'],
 \ 'ruby': ['standardrb'],
 \ 'solidity': ['forgefmt'],
-\ 'javascript': ['prettier'],
+\ 'javascript': ['biome'],
 \ 'typescript': ['biome'],
 \ 'typescriptreact': ['biome'],
 \ 'elixir': ['mix_format']

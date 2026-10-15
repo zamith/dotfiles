@@ -9,6 +9,9 @@ function safe_source()
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+# Custom themes/plugins live in the dotfiles repo
+ZSH_CUSTOM=$HOME/dotfiles/zsh/custom
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -21,12 +24,17 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(osx)
+# osx plugin was renamed to macos in newer oh-my-zsh
+if [[ -d $ZSH/plugins/macos ]]; then
+  plugins=(macos)
+else
+  plugins=(osx)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=""
+export PATH="/opt/homebrew/opt/ffmpeg-full/bin"
 export PATH="/usr/local/bin:/Users/zamith/homebrew/bin:/usr/local/Homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:usr/texbin:/usr/X11/bin:$HOME/Scripts:/usr/local/share/npm/bin:$PATH"
 # export SSL_CERT_FILE="/usr/local/etc/openssl/cert.pem"
 # export SSL_CERT_FILE="/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt"
@@ -48,7 +56,7 @@ export LANG="$LC_ALL"
 export HISTSIZE=4000
 
 # Switch to ARM homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 safe_source "$HOME/dotfiles/zsh/colors"
 safe_source "$HOME/.functions"
@@ -88,10 +96,10 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # asdf configs
-. $HOME/.asdf/asdf.sh
-source /Users/zamith/.asdf/installs/rust/nightly/env
+safe_source "$HOME/.asdf/asdf.sh"
+safe_source "$HOME/.asdf/installs/rust/nightly/env"
 
-eval "$(direnv hook zsh)"
+command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:node_modules/.bin:$PATH"
 
@@ -112,7 +120,7 @@ export PATH="/Users/zamith/.local/share/solana/install/active_release/bin:$PATH"
 export PATH="$PATH:/Users/zamith/.foundry/bin"
 export PATH="$PATH:/Users/zamith/.protostar/dist/protostar"
 export PATH="$PATH:/Users/zamith/.utrust-cli/bin"
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+safe_source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 export PATH="$PATH:/Users/zamith/.fly/bin"
 
@@ -121,3 +129,7 @@ export PATH="$PATH:/Users/zamith/.fly/bin"
 
 # Switch to x86_64 homebrew
 # eval "$(/usr/local/homebrew/bin/brew shellenv)"
+
+# Added by Antigravity
+export PATH="/Users/zamith/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"

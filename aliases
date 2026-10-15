@@ -4,6 +4,7 @@ alias a="ls -a"
 alias curl="/usr/bin/curl"
 alias rebash="source ~/.zshrc"
 alias v="nvim -u ~/.vimrc"
+alias vim="nvim -u ~/.vimrc"
 
 # Shortcuts
 alias up2="cd ../.."
@@ -42,3 +43,5 @@ alias inflate="ruby -r zlib -e 'puts Zlib::Inflate.inflate(STDIN.read)'"
 alias u="utrust"
 
 alias oldbrew=/usr/local/bin/brew
+
+alias assume=". assume"

@@ -67,7 +67,27 @@ Plug 'MeanderingProgrammer/render-markdown.nvim'
 
 autocmd VimEnter * lua require('mcphub').setup()
 Plug 'olimorris/codecompanion.nvim'
-autocmd VimEnter * lua require('codecompanion').setup()
+
+function! SetupCodeCompanion()
+lua << EOF
+require("codecompanion").setup({
+  extensions = {
+    mcphub = {
+      callback = "mcphub.extensions.codecompanion",
+      opts = {
+        make_tools = true,
+        show_server_tools_in_chat = true,
+        make_vars = true,
+        make_slash_commands = true
+      }
+    }
+  }
+})
+EOF
+endfunction
+
+autocmd VimEnter * call SetupCodeCompanion()
+
 " Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
 " autocmd VimEnter * lua require('avante').setup()
 
